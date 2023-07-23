@@ -108,7 +108,7 @@ function codewrx_starter_form_system_theme_settings_alter(&$form, FormStateInter
     '#default_value' => theme_get_setting('email_footer_signature'),
     '#description' => t('Text that is displayed at the bottom of the email body.'),
     '#attributes' => [
-      'placeholder' => t('From the Acro Media team.'),
+      'placeholder' => t('From the CodeWrx team.'),
     ],
   ];
 
