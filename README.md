@@ -1,10 +1,8 @@
-# Drupal Orange Project Template
+# Drupal CodeWrx Project Template
 
 This project template should provide a kickstart for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
-Note: Currently this is only tested with Composer 1.x compatibility. Composer
-2.x compatibility is on the roadmap shortly.
 
 ## Usage
 
