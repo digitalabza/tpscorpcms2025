@@ -1,0 +1,208 @@
+{
+  "name": "acromedia/drupal-orange-project",
+  "description": "Provides a template to create a new Drupal 9 project via Composer.",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    {
+      "type": "vcs",
+      "url": "https://git.drupalcode.org/project/orange_profile"
+    },
+    {
+      "type": "vcs",
+      "url": "https://git.drupalcode.org/project/orange_ecom_profile"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "ckeditor/colorbutton",
+        "type": "drupal-library",
+        "version": "4.7.3",
+        "dist": {
+          "url": "https://download.ckeditor.com/colorbutton/releases/colorbutton_4.7.3.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "ckeditor/font",
+        "type": "drupal-library",
+        "version": "4.7.3",
+        "dist": {
+          "url": "https://download.ckeditor.com/font/releases/font_4.7.3.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "ckeditor/panelbutton",
+        "type": "drupal-library",
+        "version": "4.7.3",
+        "dist": {
+          "url": "https://download.ckeditor.com/panelbutton/releases/panelbutton_4.7.3.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "ckeditor/ckeditor",
+        "type": "drupal-library",
+        "version": "4.11.4",
+        "dist": {
+          "url": "https://github.com/ckeditor/ckeditor-dev/archive/4.11.4.zip",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "bgrins/spectrum",
+        "type": "drupal-library",
+        "version": "master",
+        "source": {
+          "url": "https://github.com/bgrins/spectrum",
+          "type": "git",
+          "reference": "origin/master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "recurser/jquery-simple-color",
+        "type": "drupal-library",
+        "version": "master",
+        "source": {
+          "url": "https://github.com/recurser/jquery-simple-color",
+          "type": "git",
+          "reference": "origin/master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "dimsemenov/magnific-popup",
+        "type": "drupal-library",
+        "version": "master",
+        "source": {
+          "url": "https://github.com/dimsemenov/Magnific-Popup",
+          "type": "git",
+          "reference": "origin/master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "simeydotme/jquery-ui-slider-pips",
+        "type": "drupal-library",
+        "version": "v1.11.3",
+        "source": {
+          "url": "https://github.com/simeydotme/jQuery-ui-Slider-Pips",
+          "type": "git",
+          "reference": "v1.11.3"
+        }
+      }
+    }
+  ],
+  "require": {
+    "ext-curl": "*",
+    "bgrins/spectrum": "master",
+    "ckeditor/ckeditor": "4.11.4",
+    "ckeditor/colorbutton": "4.7.3",
+    "ckeditor/font": "4.7.3",
+    "ckeditor/panelbutton": "4.7.3",
+    "composer/installers": "^1.9",
+    "cweagans/composer-patches": "^1.7",
+    "dimsemenov/magnific-popup": "master",
+    "drupal/console": "^1.9",
+    "drupal/core": "^9",
+    "drupal/core-composer-scaffold": "^9",
+    "drupal/orange_ecom_profile": "^2.0@alpha",
+    "drupal/orange_profile": "2.0.0-alpha1",
+    "drush/drush": "^10",
+    "recurser/jquery-simple-color": "master",
+    "simeydotme/jquery-ui-slider-pips": "v1.11.3"
+  },
+  "require-dev": {
+    "drupal/core-dev": "^9"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "7.3"
+    },
+    "allow-plugins": {
+      "cweagans/composer-patches": true,
+      "composer/installers": true,
+      "drupal/core-composer-scaffold": true,
+      "drupal/console-extend-plugin": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "extra": {
+    "composer-exit-on-patch-failure": true,
+    "patchLevel": {
+      "drupal/core": "-p2"
+    },
+    "drupal-scaffold": {
+      "locations": {
+        "web-root": "web/"
+      }
+    },
+    "installer-paths": {
+      "web/core": [
+        "type:drupal-core"
+      ],
+      "web/libraries/{$name}": [
+        "type:drupal-library"
+      ],
+      "web/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "web/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "web/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "drush/Commands/contrib/{$name}": [
+        "type:drupal-drush"
+      ],
+      "web/modules/custom/{$name}": [
+        "type:drupal-custom-module"
+      ],
+      "web/themes/custom/{$name}": [
+        "type:drupal-custom-theme"
+      ]
+    },
+    "patches": {
+      "drupal/core": {
+        "drupalimage CKEditor plugin should not require data-entity-uuid and data-entity-type when image upload is disabled": "https://www.drupal.org/files/issues/2018-09-13/drupalimage_ckeditor-2771837-34.patch"
+      },
+      "drupal/color_field": {
+        "No functionality of the Spectrum widget on Drupal 8.6.x with latest stable or dev": "https://www.drupal.org/files/issues/2018-11-07/no_functionality_of_almost_all_widgets-3002836-7.patch"
+      },
+      "drupal/commerce_google_tag_manager": {
+        "Use product variation SKU if available instead of product ID": "https://www.drupal.org/files/issues/2020-03-27/use-product-variation-sku-if-available-3066949-7-alpha3.patch"
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+name: orange
+recipe: drupal9
+config:
+  php: 7.3
+  via: nginx
+  webroot: web
+  # Change Composer version with caution.
+  # v2.x can be incompatible with certain Drupal dependencies.
+  composer_version: '1.10.1'
+
+proxy:
+  mailhog:
+    - mail.orange.lndo.site
+  search:
+    - solr.orange.lndo.site:8983
+
+services:
+  appserver:
+    build:
+      - composer install
+
+  search:
+    type: solr:8
+    core: orange
+    portforward: true
+    # Export the site solr config and commit to the project.
+    # Can be exported from: /admin/config/search/search-api/server/solr/solr_configset/config-zip
+    # Uncomment and set the path to the exported config below.
+    #config:
+      #dir: solr_conf
+
+  node:
+    type: node
+    build:
+      # Compile theme styles.
+      - cd /app/web/themes/contrib/orange_starter && npm install && gulp -- sass
+    globals:
+      gulp-cli: latest
+
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+    portforward: true
+
+  selenium:
+    type: compose
+    services:
+      image: selenium/standalone-chrome:3.141.59-20200326
+      ports:
+        - "4444:4444"
+      volumes:
+        - /dev/shm:/dev/shm
+      command: /opt/bin/entry_point.sh
+
+  acro:
+    type: compose
+    services:
+      image: smmccabe/docker:php7.3
+      command: /opt/bin/entry_point.sh
+    overrides:
+      environment:
+        DRUPAL_TEST_BASE_URL: http://orange.lndo.site
+        DRUPAL_TEST_DB_URL: mysql://drupal8:drupal8@database/drupal8
+        # For use with the selenium image provided
+        # comment the 3 lines below out if using your local chrome
+        DRUPAL_TEST_WEBDRIVER_HOSTNAME: selenium
+        DRUPAL_TEST_WEBDRIVER_PORT: 4444
+        DRUPAL_TEST_WEBDRIVER_PATH_PREFIX: /wd/hub
+        # Uncomment the 2 below lines to use your local chrome install
+        #DRUPAL_TEST_WEBDRIVER_HOSTNAME: PUT YOUR LOCAL IP HERE, run lando ssh -c "env" | grep LANDO_HOST_IP
+        #DRUPAL_TEST_WEBDRIVER_PORT: 9515
+        DRUPAL_TEST_CHROMEDRIVER_AUTOSTART: 'false'
+        DRUPAL_NIGHTWATCH_OUTPUT: reports/nightwatch
+        DRUPAL_NIGHTWATCH_IGNORE_DIRECTORIES: node_modules,vendor,.*,sites/*/files,sites/*/private,sites/simpletest
+
+tooling:
+  nightwatch:
+    service: acro
+    cmd: cd /app/web/core && yarn test:nightwatch
+  node:
+   service: node
+  npm:
+    service: node
+  gulp:
+    service: node
+  # Nginx - xdebug on/off toggling
+  xdebug-on:
+    service: appserver
+    description: Enable xdebug for nginx.
+    cmd: docker-php-ext-enable xdebug && pkill -o -USR2 php-fpm
+    user: root
+  xdebug-off:
+    service: appserver
+    description: Disable xdebug for nginx.
+    cmd: rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm
+    user: root
