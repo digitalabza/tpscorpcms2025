@@ -1,0 +1,5 @@
+# Schema for the configuration files of the theme.
+
+jacarandafm_online.settings:
+  type: theme_settings
+  label: 'Orange E-Commerce Starter Settings'
