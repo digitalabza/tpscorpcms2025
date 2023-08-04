@@ -119,7 +119,7 @@
 
           <div class="site-header__logo">
             <a href="{{ front_page }}">
-              <img src="{{ base_path ~ directory }}/logo.svg" alt="{{ site_name ? site_name }}" />
+              <img src="{{ base_path ~ directory }}/logo.png" alt="{{ site_name ? site_name }}" />
             </a>
           </div>
 
@@ -220,6 +220,9 @@
             {% if page.highlighted %}
               {{ page.highlighted }}
             {% endif %}
+            {% if page.full_width_above_content %}
+              {{ page.full_width_above_content }}
+            {% endif %}
             {% if page.above_content %}
               {{ page.above_content }}
             {% endif %}
@@ -294,11 +297,43 @@
             </div>
           {% endif %}
 
-          {% if page.footer_nav %}
+          {# {% if page.footer_nav %}
             <div class="footer-nav">
               {{ page.footer_nav }}
             </div>
-          {% endif %}
+          {% endif %} #}
+
+          <div class="col-md-3">
+            {% if page.footer_categories %}
+              <div class="footer-nav">
+                {{ page.footer_categories }}
+              </div>
+             {% endif %}
+          </div>
+
+          <div class="col-md-3">
+            {% if page.footer_collections %}
+              <div class="footer-nav">
+                {{ page.footer_collections }}
+              </div>
+             {% endif %}
+          </div>
+
+          <div class="col-md-3">
+            {% if page.footer_links %}
+              <div class="footer-nav">
+                {{ page.footer_links }}
+              </div>
+             {% endif %}
+          </div>
+
+          <div class="col-md-3">
+            {% if page.footer_company %}
+              <div class="block-footerbottomcompanydetails">
+                {{ page.footer_company }}
+              </div>
+             {% endif %}
+          </div>
 
           <div class="site-footer__copyright">
             {{ 'Copyright &copy; @year <a href="@frontpage_url">@site_name</a>.  All rights reserved.'| t({'@site_name': copyright_name ? copyright_name : site_name, '@frontpage_url': front_page, '@year': 'now'|date('Y') }) }}

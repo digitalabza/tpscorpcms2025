@@ -1,0 +1,5 @@
+services:
+  commercevariant.event_subscriber:
+    class: Drupal\commercevariant\EventSubscriber\CommercevariantSubscriber
+    tags:
+      - { name: event_subscriber }
