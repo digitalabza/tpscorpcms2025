@@ -136,6 +136,7 @@
     "drupal/console": "^1.9",
     "drupal/core": "^9",
     "drupal/core-composer-scaffold": "^9",
+    "drupal/facets": "^1.8",
     "drupal/feeds": "^3.0@beta",
     "drupal/feeds_tamper": "^2.0@beta",
     "drupal/gin": "^3.0@RC",
