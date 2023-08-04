@@ -17,17 +17,15 @@
 /**
  * Database configuration.
  */
-// $databases['default']['default'] = array (
-//   'database' => '2023jfm',
-//   'username' => 'root',
-//   'password' => '',
-//   'prefix' => '',
-//   'host' => 'localhost',
-//   'port' => '3306',
-//   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
-//   'driver' => 'mysql',
-//   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
-// );
+$databases['default']['default'] = [
+  'database' => 'drupal9',
+  'username' => 'drupal9',
+  'password' => 'drupal9',
+  'host' => 'database',
+  'port' => '',
+  'driver' => 'mysql',
+  'prefix' => '',
+];
 
 /**
  * Swiftmailer.
