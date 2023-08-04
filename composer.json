@@ -223,6 +223,9 @@
       },
       "drupal/google_analytics": {
         "Fix depracation of code": "https://www.drupal.org/files/issues/2022-02-02/deprecated-function-explode-3260466-2.patch"
+      },
+      "drupal/schema_metatag": {
+        "Fix breadcrumb issue when filtering facets": "https://www.drupal.org/files/issues/2020-10-30/schema_metatag-fatal_error_in_SchemaItemListElementBreadcrumbBase.php-1.x-3107983-8.patch"
       }
     }
   }
