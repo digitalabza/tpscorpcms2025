@@ -1,0 +1,18 @@
+nashua_portal.mobile:
+  label: mobile
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 0
+  multipliers:
+   - 1x
+nashua_portal.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 992px)'
+  weight: 1
+  multipliers:
+    - 1x
+nashua_portal.large:
+  label: large
+  mediaQuery: 'all and (min-width: 1200px)'
+  weight: 2
+  multipliers:
+    - 1x
