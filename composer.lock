@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6b2cfb0dd848dabebc684257573f78a",
+    "content-hash": "e4bb4ceb0a3180759b282eefe46c7deb",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2911,6 +2911,176 @@
             }
         },
         {
+            "name": "drupal/commerce_cart",
+            "version": "2.36.0",
+            "require": {
+                "drupal/commerce": "*",
+                "drupal/commerce_order": "*",
+                "drupal/commerce_product": "*",
+                "drupal/core": "^9.3 || ^10"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.36",
+                    "datestamp": "1685624434",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bojanz",
+                    "homepage": "https://www.drupal.org/user/86106"
+                },
+                {
+                    "name": "Centarro",
+                    "homepage": "https://www.drupal.org/user/3661446"
+                },
+                {
+                    "name": "jsacksick",
+                    "homepage": "https://www.drupal.org/user/972218"
+                },
+                {
+                    "name": "mglaman",
+                    "homepage": "https://www.drupal.org/user/2416470"
+                },
+                {
+                    "name": "rszrama",
+                    "homepage": "https://www.drupal.org/user/49344"
+                }
+            ],
+            "description": "Implements the shopping cart system and add to cart features.",
+            "homepage": "https://www.drupal.org/project/commerce",
+            "support": {
+                "source": "https://git.drupalcode.org/project/commerce"
+            }
+        },
+        {
+            "name": "drupal/commerce_checkout",
+            "version": "2.36.0",
+            "require": {
+                "drupal/commerce": "*",
+                "drupal/commerce_cart": "*",
+                "drupal/commerce_order": "*",
+                "drupal/core": "^9.3 || ^10"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.36",
+                    "datestamp": "1685624434",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bojanz",
+                    "homepage": "https://www.drupal.org/user/86106"
+                },
+                {
+                    "name": "Centarro",
+                    "homepage": "https://www.drupal.org/user/3661446"
+                },
+                {
+                    "name": "jsacksick",
+                    "homepage": "https://www.drupal.org/user/972218"
+                },
+                {
+                    "name": "mglaman",
+                    "homepage": "https://www.drupal.org/user/2416470"
+                },
+                {
+                    "name": "rszrama",
+                    "homepage": "https://www.drupal.org/user/49344"
+                }
+            ],
+            "description": "Provides configurable checkout flows.",
+            "homepage": "https://www.drupal.org/project/commerce",
+            "support": {
+                "source": "https://git.drupalcode.org/project/commerce"
+            }
+        },
+        {
+            "name": "drupal/commerce_checkout_order_fields",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/commerce_checkout_order_fields.git",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/commerce_checkout_order_fields-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "60d0c40e7175b90adf60593b3034df74ab960bcb"
+            },
+            "require": {
+                "drupal/commerce": "^2.4",
+                "drupal/commerce_checkout": "*",
+                "drupal/core": "^8.9 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1698054046",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
+                    "name": "geek-merlin",
+                    "homepage": "https://www.drupal.org/user/229048"
+                },
+                {
+                    "name": "Grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
+                },
+                {
+                    "name": "harings_rob",
+                    "homepage": "https://www.drupal.org/user/1742028"
+                },
+                {
+                    "name": "thomas.frobieter",
+                    "homepage": "https://www.drupal.org/user/409335"
+                }
+            ],
+            "description": "Exposes a form display for orders to be collected during checkout",
+            "homepage": "https://www.drupal.org/project/commerce_checkout_order_fields",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/commerce_checkout_order_fields",
+                "issues": "https://www.drupal.org/project/issues/commerce_checkout_order_fields"
+            }
+        },
+        {
             "name": "drupal/commerce_feeds",
             "version": "1.0.0-alpha4",
             "source": {
@@ -4714,6 +4884,55 @@
             }
         },
         {
+            "name": "drupal/facets_range_dropdowns",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/facets_range_dropdowns.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/facets_range_dropdowns-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "be5cd4b693462164228ecba56b227fd723c956c3"
+            },
+            "require": {
+                "drupal/core": "^9.5 || ^10",
+                "drupal/facets": "*"
+            },
+            "require-dev": {
+                "drupal/facets": "~1.4"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1699443525",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "See all contributors",
+                    "homepage": "https://www.drupal.org/node/3052257/committers"
+                }
+            ],
+            "description": "Provides processors and a widget to handle ranges with dropdowns in facets.",
+            "homepage": "https://www.drupal.org/project/facets_range_dropdowns",
+            "support": {
+                "source": "https://git.drupalcode.org/project/facets_range_dropdowns.git",
+                "issues": "https://www.drupal.org/project/issues/facets_range_dropdowns"
+            }
+        },
+        {
             "name": "drupal/feeds",
             "version": "3.0.0-beta4",
             "source": {
@@ -6133,6 +6352,67 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/login_destination",
                 "issues": "https://drupal.org/project/issues/login_destination"
+            }
+        },
+        {
+            "name": "drupal/login_history",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/login_history.git",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/login_history-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "540fa39120b6984a8b5f33b9ce850e2655218684"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1638219447",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bocaj",
+                    "homepage": "https://www.drupal.org/user/582042"
+                },
+                {
+                    "name": "greggles",
+                    "homepage": "https://www.drupal.org/user/36762"
+                },
+                {
+                    "name": "jcnventura",
+                    "homepage": "https://www.drupal.org/user/122464"
+                },
+                {
+                    "name": "leymannx",
+                    "homepage": "https://www.drupal.org/user/2482808"
+                },
+                {
+                    "name": "star-szr",
+                    "homepage": "https://www.drupal.org/user/1167326"
+                }
+            ],
+            "description": "Provides information about individual user logins",
+            "homepage": "https://www.drupal.org/project/login_history",
+            "support": {
+                "source": "https://git.drupalcode.org/project/login_history",
+                "issues": "https://www.drupal.org/project/issues/login_history"
             }
         },
         {

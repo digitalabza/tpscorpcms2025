@@ -131,18 +131,21 @@
     "drupal/adminimal_admin_toolbar": "^1.11",
     "drupal/asset_injector": "^2.17",
     "drupal/best_selling_products": "^3.12",
+    "drupal/commerce_checkout_order_fields": "^1.2",
     "drupal/commerce_feeds": "^1.0@alpha",
     "drupal/commerce_stock": "^1.1",
     "drupal/console": "^1.9",
     "drupal/core": "^9",
     "drupal/core-composer-scaffold": "^9",
     "drupal/facets": "^1.8",
+    "drupal/facets_range_dropdowns": "^2.0",
     "drupal/feeds": "^3.0@beta",
     "drupal/feeds_tamper": "^2.0@beta",
     "drupal/gin": "^3.0@RC",
     "drupal/gin_login": "^2.0",
     "drupal/gin_toolbar": "^1.0@RC",
     "drupal/login_destination": "^2.0@beta",
+    "drupal/login_history": "^1.1",
     "drupal/orange_ecom_profile": "^2.0@alpha",
     "drupal/orange_profile": "2.0.0-alpha1",
     "drupal/shield": "^1.7",
@@ -227,6 +230,9 @@
       },
       "drupal/schema_metatag": {
         "Fix breadcrumb issue when filtering facets": "https://www.drupal.org/files/issues/2020-10-30/schema_metatag-fatal_error_in_SchemaItemListElementBreadcrumbBase.php-1.x-3107983-8.patch"
+      },
+      "drupal/facets": {
+        "Fix decimal in facets range slider": "https://www.drupal.org/files/issues/2023-07-14/do3317545-5.patch", "Fix JS in facets range slider":"https://www.drupal.org/files/issues/2021-01-08/facets-widget-range-slider.patch"
       }
     }
   }
