@@ -1,6 +1,0 @@
-.idea
-.DS_Store
-# node_modules
-composer.lock
-package-lock.json
-# css/style.css

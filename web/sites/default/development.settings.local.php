@@ -20,11 +20,16 @@
 $databases['default']['default'] = [
   'database' => 'drupal9',
   'username' => 'drupal9',
-  'password' => 'drupal9',
-  'host' => 'database',
-  'port' => '',
-  'driver' => 'mysql',
+  'password' => '',
   'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'init_commands' => [
+    'isolation_level' => 'SET SESSION tx_isolation=\'READ-COMMITTED\'',
+  ],
+  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+  'driver' => 'mysql',
+  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
 ];
 
 /**
