@@ -570,7 +570,7 @@ function nashua_portal_form_alter(&$form, FormStateInterface $form_state, $form_
         '#type' => 'inline_template',
         '#template' => '<h2 class="commerce-checkout__section-title">{{ title_text }}</h2>',
         '#context' => [
-          'title_text' => t('Optional'),
+          'title_text' => t(''),
         ],
         '#weight' => -99,
       ];

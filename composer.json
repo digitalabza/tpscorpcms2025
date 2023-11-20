@@ -130,7 +130,9 @@
     "dimsemenov/magnific-popup": "master",
     "drupal/adminimal_admin_toolbar": "^1.11",
     "drupal/asset_injector": "^2.17",
+    "drupal/backup_migrate": "^5.0",
     "drupal/best_selling_products": "^3.12",
+    "drupal/commerce_agree_terms": "^2.0",
     "drupal/commerce_checkout_order_fields": "^1.2",
     "drupal/commerce_feeds": "^1.0@alpha",
     "drupal/commerce_stock": "^1.1",
@@ -233,6 +235,9 @@
       },
       "drupal/facets": {
         "Fix decimal in facets range slider": "https://www.drupal.org/files/issues/2023-07-14/do3317545-5.patch", "Fix JS in facets range slider":"https://www.drupal.org/files/issues/2021-01-08/facets-widget-range-slider.patch"
+      },
+      "drupal/commerce_agree_terms": {
+        "Fix checkout pane breakage": "https://www.drupal.org/files/issues/2023-08-07/3350343-4.patch"
       }
     }
   }
