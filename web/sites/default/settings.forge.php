@@ -28,10 +28,10 @@ $settings['config_sync_directory'] = '../config/sync';
 $settings['skip_permissions_hardening'] = TRUE;
 
 // Trusted host pattern.
-$settings['trusted_host_patterns'] = array(
-    '^shopnashuaonline\.co.za$',
-    '^.+\.shopnashuaonline\.co.za$',
-  );
+// $settings['trusted_host_patterns'] = array(
+//     '^shopnashuaonline\.co.za$',
+//     '^.+\.shopnashuaonline\.co.za$',
+//   );
 
 
 // Enable Redis caching.
