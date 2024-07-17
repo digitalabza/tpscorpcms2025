@@ -33,6 +33,15 @@ $settings['skip_permissions_hardening'] = TRUE;
 //     '^.+\.shopnashuaonline\.co.za$',
 //   );
 
+/**
+ * Disable tracking scripts.
+ *
+ * It's good practice to have these set on staging environments as well.
+ */
+$config['google_analytics.settings']['account'] = 'UA-XXXXXXXX-XX';
+$config['google_tag.settings']['container_id'] = 'GTM-XXXXXX';
+$config['google_tag.container.default']['container_id'] = 'GTM-XXXXXX';
+$config['hotjar.settings']['account'] = 'XXXXXX';
 
 // Enable Redis caching.
 if (!\Drupal\Core\Installer\InstallerKernel::installationAttempted() && extension_loaded('redis') && class_exists('Drupal\redis\ClientFactory')) {
