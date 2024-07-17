@@ -232,6 +232,9 @@
       "web/modules/custom/{$name}": [
         "type:drupal-custom-module"
       ],
+      "web/profiles/custom/{$name}": [
+        "type:drupal-custom-profile"
+      ],
       "web/themes/custom/{$name}": [
         "type:drupal-custom-theme"
       ]
@@ -263,6 +266,20 @@
       "drupal/schema_metatag": {
         "Fix breadcrumb issue when filtering facets": "https://www.drupal.org/files/issues/2020-10-30/schema_metatag-fatal_error_in_SchemaItemListElementBreadcrumbBase.php-1.x-3107983-8.patch"
       }
+    },
+    "scripts": {
+      "post-install-cmd": [
+        "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+      ],
+      "post-update-cmd": [
+        "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+      ],
+      "pre-install-cmd": [
+        "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+      ],
+      "pre-update-cmd": [
+        "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+      ]
     }
   }
 }
