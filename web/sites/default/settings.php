@@ -815,6 +815,21 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # $settings['migrate_file_public_path'] = '';
 # $settings['migrate_file_private_path'] = '';
 
+
+
+$settings['config_sync_directory'] = 'sites/default/files/config_p6F_vabknBeJX4rJO3ael6cT2NSmFFF7VOHcpGZvvvEc9ohqkOP3hm0VJZS6vHil-wf-UV3K6g/sync';
+
+// Automatically generated include for settings managed by ddev.
+$ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
+if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
+  require $ddev_settings;
+}
+
+// Include settings required for Redis cache.
+if ((file_exists(__DIR__ . '/settings.ddev.redis.php') && getenv('IS_DDEV_PROJECT') == 'true')) {
+  include __DIR__ . '/settings.ddev.redis.php';
+}
+
 /**
  * Load local development override configuration, if available.
  *
@@ -830,7 +845,5 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  */
 #
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-   include $app_root . '/' . $site_path . '/settings.local.php';
+  include $app_root . '/' . $site_path . '/settings.local.php';
 }
-
-$settings['config_sync_directory'] = 'sites/default/files/config_p6F_vabknBeJX4rJO3ael6cT2NSmFFF7VOHcpGZvvvEc9ohqkOP3hm0VJZS6vHil-wf-UV3K6g/sync';
