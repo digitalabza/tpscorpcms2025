@@ -193,6 +193,20 @@
       "load.environment.php"
     ]
   },
+  "scripts": {
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
   "config": {
     "allow-plugins": {
       "composer/installers": true,
@@ -268,20 +282,6 @@
       "drupal/schema_metatag": {
         "Fix breadcrumb issue when filtering facets": "https://www.drupal.org/files/issues/2020-10-30/schema_metatag-fatal_error_in_SchemaItemListElementBreadcrumbBase.php-1.x-3107983-8.patch"
       }
-    },
-    "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
     }
   }
 }
