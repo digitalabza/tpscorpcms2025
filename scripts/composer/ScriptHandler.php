@@ -10,10 +10,9 @@ namespace DrupalProject\composer;
 use Composer\Script\Event;
 use Composer\Semver\Comparator;
 use Drupal\Core\Site\Settings;
-use Drupal\Core\Site\SettingsEditor;
 use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Path;
+use Webmozart\PathUtil\Path;
 
 class ScriptHandler {
 
@@ -47,7 +46,7 @@ class ScriptHandler {
         'value' => Path::makeRelative($drupalFinder->getComposerRoot() . '/config/sync', $drupalRoot),
         'required' => TRUE,
       ];
-      SettingsEditor::rewrite($drupalRoot . '/sites/default/settings.php', $settings);
+      drupal_rewrite_settings($settings, $drupalRoot . '/sites/default/settings.php');
       $fs->chmod($drupalRoot . '/sites/default/settings.php', 0666);
       $event->getIO()->write("Created a sites/default/settings.php file with chmod 0666");
     }
