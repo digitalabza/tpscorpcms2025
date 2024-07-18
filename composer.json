@@ -31,7 +31,7 @@
     "drupal/ctools": "3.14",
     "drupal/entity_embed": "1.5",
     "drupal/facets": "^1.8",
-    "drupal/facets_pretty_paths": "1.6",
+    "drupal/facets_pretty_paths": "1.4",
     "drupal/facets_range_dropdowns": "^2.0",
     "drupal/feeds": "^3.0@beta",
     "drupal/feeds_tamper": "^2.0@beta",

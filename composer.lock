@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2dbb1419235aaa07140ae52021e87439",
+    "content-hash": "bc63cd8532b6a878f22b9c23cafc6970",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5034,21 +5034,21 @@
         },
         {
             "name": "drupal/facets_pretty_paths",
-            "version": "1.6.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/facets_pretty_paths.git",
-                "reference": "8.x-1.6"
+                "reference": "8.x-1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/facets_pretty_paths-8.x-1.6.zip",
-                "reference": "8.x-1.6",
-                "shasum": "0458840e327562b3c9ec946e066079e54739377d"
+                "url": "https://ftp.drupal.org/files/projects/facets_pretty_paths-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "a0ae64ef6c22adb75a4ef0e9b2e23ac58caf6dd3"
             },
             "require": {
                 "drupal/core": "^9.1 || ^10",
-                "drupal/facets": "^1 || ^2 || ^3",
+                "drupal/facets": "^1 || ^2",
                 "drupal/pathauto": "^1"
             },
             "require-dev": {
@@ -5057,8 +5057,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.6",
-                    "datestamp": "1703042576",
+                    "version": "8.x-1.4",
+                    "datestamp": "1671178925",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
