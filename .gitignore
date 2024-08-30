@@ -37,3 +37,4 @@
 # Ignore .env files as they are personal
 /.env
 /.env.forge
+/.env.project
