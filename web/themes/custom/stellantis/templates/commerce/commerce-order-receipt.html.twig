@@ -1,0 +1,159 @@
+{#
+/**
+ * @file
+ * Template for the order receipt.
+ *
+ * Available variables:
+ * - order_entity: The order entity.
+ * - billing_information: The billing information.
+ * - shipping_information: The shipping information.
+ * - payment_method: The payment method.
+ * - totals: An array of order totals values with the following keys:
+ *   - subtotal: The order subtotal price.
+ *   - adjustments: An array of adjustment totals:
+ *     - type: The adjustment type.
+ *     - label: The adjustment label.
+ *     - total: The adjustment total price.
+ *     - weight: The adjustment weight, taken from the adjustment type.
+ *   - total: The order total price.
+ *
+ * @ingroup themeable
+ */
+#}
+<table style="margin: 0 auto; padding: 0; width: 100%; font-family: Arial, sans-serif;">
+  <tbody>
+  <tr>
+    <td>
+      <table style="margin-left: auto; margin-right: auto; width: 100%; text-align: right; font-family: Arial, sans-serif;">
+        <tbody>
+        <tr>
+          <td style="font-size: 13px; padding-bottom: 2px">
+             {{ 'Shop Nashua Online \n7 Angus Crescent \Longmeadow East Business Estate \nEdenvale \n2090' |nl2br|t }}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 14px; font-weight: bold; padding-bottom: 2px; padding-top: 18px">
+             {{ 'Date: @date'|t({'@date': order_entity.getPlacedTime|date("d/m/Y - H:i")}) }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <table style="text-align: center; width: 100%; margin: 5px auto 0 auto; border: 1px solid #ffffff; border-radius: 5px; padding: 20px 30px 30px 30px; font-family: Arial, sans-serif;">
+        <tbody>
+        <tr>
+          <td style="font-size: 20px; padding-bottom: 30px">{{ 'Order Request Confirmation'|t }}</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; padding-top:15px; padding-bottom: 15px; text-align: left; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc; vertical-align: top;">
+            {{ 'Order #@number Details:'|t({'@number': order_entity.getOrderNumber}) }}
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">
+            {% block order_items %}
+            <table style="padding-top: 10px; padding-bottom:10px; font-family: Arial, sans-serif; font-size: 14px; width: 90%">
+              <tbody style="text-align: left;">
+              {% for order_item in order_entity.getItems %}
+              <tr>
+                <td style="vertical-align: top;">
+                  {{ order_item.getQuantity|number_format }} x
+                </td>
+                <td style="vertical-align: top; font-family: Arial, sans-serif;">
+                  <span>{{ order_item.label }}</span>
+                  <span>{{ order_item.getPurchasedEntity|commerce_entity_render('receipt') }}</span>
+                </td>
+                <td>
+                   <span style="vertical-align: top; float: right;">{{ order_item.getTotalPrice|commerce_price_format }}</span>
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            {% endblock %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {% if (billing_information or shipping_information) %}
+            <table style="width: 95%; padding-top:15px; font-family: Arial, sans-serif; padding-bottom: 5px; text-align: left; border-top: 1px solid #ececec; border-bottom: 1px solid #ececec">
+              <tbody>
+              <tr>
+                {% if shipping_information %}
+                  <td style="padding-top: 15px; font-weight: bold; vertical-align: top;">{{ 'Shipping Information'|t }}</td>
+                {% endif %}
+                {% if billing_information %}
+                  <td style="padding-top: 15px; font-weight: bold; vertical-align: top;">{{ 'Billing Information'|t }}</td>
+                {% endif %}
+              </tr>
+              <tr>
+                {% if shipping_information %}
+                  <td style="vertical-align: top; width: 50%">
+                    {% block shipping_information %}
+                      {{ shipping_information }}
+                    {% endblock %}
+                  </td>
+                <tr>
+                    <td style="padding-top: 10px; vertical-align: top;">{{ 'Order Generation Number'|t }}</td>
+                      {{ order_entity.field_purchase_order_number.value }}
+                  </tr>
+
+                  <tr>
+                    <td style="font-size: 14px; font-weight: bold; vertical-align: top;">{{ 'Delivery is 7-10 working days from order confirmation or payment. No returns on branded items, other than manufacturing defects.'|t }}</td>
+                  </tr>
+                {% endif %}
+
+                {% if billing_information %}
+                  <td style="vertical-align: top; width: 50%">
+                    {% block billing_information %}
+                      {{ billing_information }}
+                    {% endblock %}
+                  </td>
+                {% endif %}
+              </tr>
+              {% if payment_method %}
+                <tr>
+                  <td style="font-size: 14px; font-weight: normal; padding-top: 40px; vertical-align: top;">{{ 'Payment Method'|t }}</td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">
+                    {% block payment_method %}
+                      <p>{{ payment_method }}</p>
+                    {% endblock %}
+                  </td>
+                </tr>
+              {% endif %}
+              </tbody>
+            </table>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+         <td style="padding-top: 10px; padding-right: 10px; text-align: right; font-family: Arial, sans-serif;">
+            {{ 'Subtotal: @subtotal'|t({'@subtotal': totals.subtotal|commerce_price_format}) }}
+          </td>
+        </tr>
+        {% for adjustment in totals.adjustments %}
+        <tr>
+         <td style="padding-top: 5px; padding-right: 10px; text-align: right; font-family: Arial, sans-serif;">
+            {{ adjustment.label }}: {{ adjustment.total|commerce_price_format }}
+          </td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td style="padding-top: 5px; padding-bottom: 10px; padding-right: 10px; font-size: 20px; text-align: right; font-family: Arial, sans-serif;">
+            {{ 'Order Total: @total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-top: 20px; padding-bottom: 20px; border-top: 1px solid #ececec; font-size: 12px; font-family: Arial, sans-serif;">
+            {% block additional_information %}
+              {{ 'Thank you for placing your order with Shop Nashua Online \nQueries: orders@shopnashuaonline.co.za' |nl2br|t }}
+            {% endblock %}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
