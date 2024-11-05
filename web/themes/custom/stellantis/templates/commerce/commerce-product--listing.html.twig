@@ -58,7 +58,8 @@
         </div>
       {% endif %}
       <div class="product__price">
-        {{ product.variation_price }}
+        {# {{ product.variation_price }} #}
+        {{ 'Dealer'|t }}: {{ product.variation_price }} {{ 'excl VAT'|t }}
       </div>
       {% if product.variation_list_price %}
         <div class="product__list-price">

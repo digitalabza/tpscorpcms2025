@@ -642,20 +642,21 @@ function stellantis_preprocess(&$variables, $hook)
 
       // Back to catalog link generation.
       $current_path = \Drupal::request()->getRequestUri();
-      $variables['product_path'] = Url::fromRoute('entity.commerce_product.canonical', ['commerce_product' => $product->id(), 'referrer' => $current_path]);
+      // $variables['product_path'] = Url::fromRoute('entity.commerce_product.canonical', ['commerce_product' => $product->id(), 'referrer' => $current_path]);
+      $variables['product_path'] = Url::fromRoute('entity.commerce_product.canonical', ['commerce_product' => $product->id()]);
       $store_route = 'view.store.product_listing';
-      $referrer = UrlHelper::stripDangerousProtocols(\Drupal::request()->query->get('referrer'));
+      // $referrer = UrlHelper::stripDangerousProtocols(\Drupal::request()->query->get('referrer'));
       $variables['back_to_catalog_path'] = Url::fromRoute($store_route);
 
-      if (substr($referrer, 0, 1) === '/') {
-        $referrer_url = Url::fromUserInput($referrer);
-        // Proceed if referrer has a Drupal route.
-        if ($referrer_url->isRouted()) {
-          if ($referrer_url->getRouteName() == $store_route) {
-            $variables['back_to_catalog_path'] = Xss::filter($referrer);
-          }
-        }
-      }
+      // if (substr($referrer, 0, 1) === '/') {
+      //   $referrer_url = Url::fromUserInput($referrer);
+      //   // Proceed if referrer has a Drupal route.
+      //   if ($referrer_url->isRouted()) {
+      //     if ($referrer_url->getRouteName() == $store_route) {
+      //       $variables['back_to_catalog_path'] = Xss::filter($referrer);
+      //     }
+      //   }
+      // }
 
       // Get product and variations.
       $product_variations = $product->getVariations();

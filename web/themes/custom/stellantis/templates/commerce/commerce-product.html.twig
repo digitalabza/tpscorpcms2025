@@ -75,7 +75,8 @@
         <div class="site-content">
           <article{{ attributes }}>
             <div class="product__header clearfix">
-              <a href="{{ back_to_catalog_path }}" class="btn btn--default btn--product-go-back">{{ 'Back to Products'|t }}</a>
+              {# <a href="{{ back_to_catalog_path }}" class="btn btn--default btn--product-go-back">{{ 'Back to Products'|t }}</a> #}
+              <a href="#" onclick="history.go(-1); event.preventDefault();" class="btn btn--default btn--product-go-back">{{ 'Back to products'|t }}</a>
 
               <div class="hidden-xs hidden-sm">
                 {# Social Media Sharing. #}
@@ -177,7 +178,7 @@
                   {# / Brands. #}
                   <h2 class="product__title">{{ product.title }}</h2>
                   <div class="product__price">
-                    {{ product.variation_price }}
+                    {{ 'Dealer'|t }}: {{ product.variation_price }} {{ 'excl VAT'|t }}
                   </div>
                   {% if product.variation_list_price %}
                     <div class="product__list-price">
