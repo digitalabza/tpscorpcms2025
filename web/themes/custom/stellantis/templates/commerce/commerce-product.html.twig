@@ -188,7 +188,7 @@
                   <div class="product__details">
                     <div class="product__sku">
                       {{ product.variation_sku }}
-                      {{ 'Part No'|t }}: {{ product.field_part_no }}
+                    {{ product.variation_field_part_no }}
                     </div>
                     {% if reviews_are_active and average_star_rating|length %}
                       <div class="product__average-rating">
