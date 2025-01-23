@@ -28,7 +28,7 @@
         <tbody>
         <tr>
           <td style="font-size: 13px; padding-bottom: 2px">
-             {{ 'Shop Nashua Online \n7 Angus Crescent \Longmeadow East Business Estate \nEdenvale \n2090' |nl2br|t }}
+             {{ 'Stellantis Lifestyle Merchandise \n7 Angus Crescent \Longmeadow East Business Estate \nEdenvale \n2090' |nl2br|t }}
           </td>
         </tr>
         <tr>
@@ -92,10 +92,19 @@
                       {{ shipping_information }}
                     {% endblock %}
                   </td>
-                <tr>
-                    <td style="padding-top: 10px; vertical-align: top;">{{ 'Order Generation Number'|t }}</td>
+
+                  <tr>
+                  <td style="padding-top: 10px; font-family: Arial, font-size: 14px; sans-serif;">
+                    {{ 'Purchase Order Number: \n@purchaseordernumber' |nl2br|t ({'@purchaseordernumber': order_entity.field_purchase_order_number.value }) }}
+                  </td>
+                </tr>
+
+                <br /><br />
+
+                  {# <tr>
+                    <td style="padding-top: 10px; vertical-align: top;">{{ 'Purchase Order Number'|t }}</td>
                       {{ order_entity.field_purchase_order_number.value }}
-                  </tr>
+                  </tr> #}
 
                   <tr>
                     <td style="font-size: 14px; font-weight: bold; vertical-align: top;">{{ 'Delivery is 7-10 working days from order confirmation or payment. No returns on branded items, other than manufacturing defects.'|t }}</td>
@@ -147,7 +156,7 @@
         <tr>
           <td style="padding-top: 20px; padding-bottom: 20px; border-top: 1px solid #ececec; font-size: 12px; font-family: Arial, sans-serif;">
             {% block additional_information %}
-              {{ 'Thank you for placing your order with Shop Nashua Online \nQueries: orders@shopnashuaonline.co.za' |nl2br|t }}
+              {{ 'Thank you for placing your order with Stellantis Lifestyle Merchandise \nQueries: orders@lifestylemerchandise.co.za' |nl2br|t }}
             {% endblock %}
           </td>
         </tr>

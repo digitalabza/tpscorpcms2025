@@ -10,12 +10,16 @@
  * @ingroup themeable
  */
 #}
-<h1 class="page-title">{{ 'Order Received!'|t }}</h1>
+<h1 class="page-title">{{ 'Order Confirmation Received'|t }}</h1>
 <div class="checkout-complete">
-  <h3>{{ 'Thank You!'|t }}</h3>
-  <p>{{ 'Your order has been submitted. You should receive confirmation via the email address provided.'|t }}</p>
+  {# <h3>{{ 'Thank You!'|t }}</h3> #}
+  <p></p>
+  <p>{{ 'Your order has been submitted. You should receive an order confirmation via the email address provided.'|t }}</p>
   <p>{{ 'Your order number is:'|t }} <span class="checkout-complete__order-number">{{ '@number'|t({'@number': order_entity.getOrderNumber}) }}</span></p>
-  <p>{{ 'If you have any questions, please <a href="@contact_url">contact</a> our customer service team.'|t({'@contact_url': path('entity.node.canonical', {'node': 5}) }) }}</p>
+  <p>{{ 'If you have any queries related to your order, please email orders@lifestylemerchandise.co.za'|t }}</p>
+
+
+  {# <p>{{ 'If you have any questions, please <a href="@contact_url">contact</a> our customer service team.'|t({'@contact_url': path('entity.node.canonical', {'node': 5}) }) }}</p> #}
 
   {% if payment_instructions %}
     <div class="checkout-complete__payment-instructions">
