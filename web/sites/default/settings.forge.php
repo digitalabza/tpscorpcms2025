@@ -2,18 +2,18 @@
 
 
 
-$databases['default']['default'] = [
-  'driver' => 'mysql',
-  'database' => $_ENV['MYSQL_DATABASE'],
-  'username' => $_ENV['MYSQL_USER'],
-  'password' => $_ENV['MYSQL_PASSWORD'],
-  'host' => $_ENV['MYSQL_HOSTNAME'],
-  'port' => $_ENV['MYSQL_PORT'],
-  'init_commands' => [
-    'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
-  ],
-];
-$databases['default']['default']['namespace'] = 'Drupal\\Core\\Database\\Driver\\mysql';
+// $databases['default']['default'] = [
+//   'driver' => 'mysql',
+//   'database' => $_ENV['MYSQL_DATABASE'],
+//   'username' => $_ENV['MYSQL_USER'],
+//   'password' => $_ENV['MYSQL_PASSWORD'],
+//   'host' => $_ENV['MYSQL_HOSTNAME'],
+//   'port' => $_ENV['MYSQL_PORT'],
+//   'init_commands' => [
+//     'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
+//   ],
+// ];
+// $databases['default']['default']['namespace'] = 'Drupal\\Core\\Database\\Driver\\mysql';
 
 $settings['hash_salt'] = 'dc75023fe71bd42038fbb864ba03b0859b8c4427709337beec9f694c1f548abd';
 
