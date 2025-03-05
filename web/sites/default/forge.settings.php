@@ -19,7 +19,7 @@ $settings['config_sync_directory'] = '../config/sync';
 
 // Don't use Symfony's APCLoader. ddev includes APCu; Composer's APCu loader has
 // better performance.
-$settings['class_loader_auto_detect'] = FALSE;
+// $settings['class_loader_auto_detect'] = FALSE;
 
 
 // Automatic Forge settings.

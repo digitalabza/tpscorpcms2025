@@ -65,18 +65,18 @@ if (!\Drupal\Core\Installer\InstallerKernel::installationAttempted() && extensio
   // and allows to use it without the redis module being enabled.
   $class_loader->addPsr4('Drupal\\redis\\', 'modules/contrib/redis/src');
 
-  // // Enable Redis for specific cache bins (optional, but recommended for Commerce).
-  // $settings['cache']['bins']['render'] = 'cache.backend.redis';
-  // $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.redis';
-  // $settings['cache']['bins']['page'] = 'cache.backend.redis';
+  // Enable Redis for specific cache bins (optional, but recommended for Commerce).
+  $settings['cache']['bins']['render'] = 'cache.backend.redis';
+  $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.redis';
+  $settings['cache']['bins']['page'] = 'cache.backend.redis';
 
-  // // Cache settings.
-  // $settings['cache_minimum_lifetime'] = 0;    // No minimum lifetime.
-  // // $settings['page_cache_maximum_age'] = 900;  // 15 minutes for cached pages.
-  // $settings['page_cache_maximum_age'] = 3600;  // 60 minutes for cached pages.
+  // Cache settings.
+  $settings['cache_minimum_lifetime'] = 0;    // No minimum lifetime.
+  // $settings['page_cache_maximum_age'] = 900;  // 15 minutes for cached pages.
+  $settings['page_cache_maximum_age'] = 3600;  // 60 minutes for cached pages.
 
-  // // Enable Internal Page Cache.
-  // $settings['omit_vary_cookie'] = FALSE;
+  // Enable Internal Page Cache.
+  $settings['omit_vary_cookie'] = FALSE;
 
   // Use redis for container cache.
   // The container cache is used to load the container definition itself, and
