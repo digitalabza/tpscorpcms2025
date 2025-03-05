@@ -3,19 +3,19 @@
 
 
 $databases['default']['default'] = [
-    'driver' => 'mysql',
-    'database' => $_ENV['MYSQL_DATABASE'],
-    'username' => $_ENV['MYSQL_USER'],
-    'password' => $_ENV['MYSQL_PASSWORD'],
-    'host' => $_ENV['MYSQL_HOSTNAME'],
-    'port' => $_ENV['MYSQL_PORT'],
-    'init_commands' => [
-      'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
-    ],
-  ];
-  $databases['default']['default']['namespace'] = 'Drupal\\Core\\Database\\Driver\\mysql';
+  'driver' => 'mysql',
+  'database' => $_ENV['MYSQL_DATABASE'],
+  'username' => $_ENV['MYSQL_USER'],
+  'password' => $_ENV['MYSQL_PASSWORD'],
+  'host' => $_ENV['MYSQL_HOSTNAME'],
+  'port' => $_ENV['MYSQL_PORT'],
+  'init_commands' => [
+    'isolation_level' => 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
+  ],
+];
+$databases['default']['default']['namespace'] = 'Drupal\\Core\\Database\\Driver\\mysql';
 
-  $settings['hash_salt'] = 'dc75023fe71bd42038fbb864ba03b0859b8c4427709337beec9f694c1f548abd';
+$settings['hash_salt'] = 'dc75023fe71bd42038fbb864ba03b0859b8c4427709337beec9f694c1f548abd';
 
 // Set a default private files directory outside of the docroot.
 $settings['file_private_path'] = '../private';
@@ -64,6 +64,19 @@ if (!\Drupal\Core\Installer\InstallerKernel::installationAttempted() && extensio
   // Manually add the classloader path, this is required for the container cache bin definition below
   // and allows to use it without the redis module being enabled.
   $class_loader->addPsr4('Drupal\\redis\\', 'modules/contrib/redis/src');
+
+  // Enable Redis for specific cache bins (optional, but recommended for Commerce).
+  $settings['cache']['bins']['render'] = 'cache.backend.redis';
+  $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.redis';
+  $settings['cache']['bins']['page'] = 'cache.backend.redis';
+
+  // Cache settings.
+  $settings['cache_minimum_lifetime'] = 0;    // No minimum lifetime.
+  // $settings['page_cache_maximum_age'] = 900;  // 15 minutes for cached pages.
+  $settings['page_cache_maximum_age'] = 3600;  // 60 minutes for cached pages.
+
+  // Enable Internal Page Cache.
+  $settings['omit_vary_cookie'] = FALSE;
 
   // Use redis for container cache.
   // The container cache is used to load the container definition itself, and

@@ -19,7 +19,7 @@
     "drupal/asset_injector": "^2.17",
     "drupal/backup_migrate": "^5.0",
     "drupal/best_selling_products": "^3.12",
-    "drupal/commerce": "2.38",
+    "drupal/commerce": "^2.40",
     "drupal/commerce_agree_terms": "^2.0",
     "drupal/commerce_checkout_order_fields": "^1.2",
     "drupal/commerce_feeds": "^1.0@alpha",
@@ -31,6 +31,7 @@
     "drupal/core-project-message": "9.5.11",
     "drupal/core-recommended": "9.5.11",
     "drupal/ctools": "3.14",
+    "drupal/easy_breadcrumb": "^1.15",
     "drupal/embed": "1.7",
     "drupal/entity_embed": "1.5",
     "drupal/facets": "^1.8",
@@ -42,6 +43,7 @@
     "drupal/gin": "3.0-rc5",
     "drupal/gin_login": "^2.0",
     "drupal/gin_toolbar": "1.0-rc5",
+    "drupal/google_analytics": "^3.1",
     "drupal/jquery_ui": "1.6",
     "drupal/login_destination": "^2.0@beta",
     "drupal/login_history": "^1.1",
@@ -200,19 +202,19 @@
     ]
   },
   "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
-    },
+    "pre-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "pre-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+    ],
+    "post-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "post-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ]
+  },
   "config": {
     "allow-plugins": {
       "composer/installers": true,
@@ -283,10 +285,13 @@
         "Fix JS in facets range slider": "https://www.drupal.org/files/issues/2021-01-08/facets-widget-range-slider.patch"
       },
       "drupal/google_analytics": {
-        "Fix depracation of code": "https://www.drupal.org/files/issues/2022-02-02/deprecated-function-explode-3260466-2.patch"
+        "Fix Deprecated json format for PHP8.1": "https://www.drupal.org/files/issues/2023-04-14/google_analytics-deprecated_function-3312418-10.patch"
       },
       "drupal/schema_metatag": {
         "Fix breadcrumb issue when filtering facets": "https://www.drupal.org/files/issues/2020-10-30/schema_metatag-fatal_error_in_SchemaItemListElementBreadcrumbBase.php-1.x-3107983-8.patch"
+      },
+      "drupal/easy_breadcrumb": {
+        "PHP 8.1 EasyBreadcrumbBuilder::normalizeText deprecation": "https://www.drupal.org/files/issues/2022-01-10/easy_breadcrumb-easy_breadcrumb_builder_deprecation-3257776-2.patch"
       }
     }
   }
