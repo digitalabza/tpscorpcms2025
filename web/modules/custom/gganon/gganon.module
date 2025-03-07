@@ -1,0 +1,63 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_commerce_order_item_add_to_cart_form_alter().
+ *
+ * This hook hides:
+ * - The add-to-cart button(s)
+ * - The quantity field
+ * - The order item type dropdown fields (if found within the purchased_entity attributes)
+ * for anonymous users.
+ */
+function gganon_form_commerce_order_item_add_to_cart_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if (\Drupal::currentUser()->isAnonymous()) {
+
+    // --- Hide the add-to-cart submit button(s) ---
+    if (isset($form['actions']['submit'])) {
+      $form['actions']['submit']['#access'] = FALSE;
+    }
+    if (isset($form['actions']) && is_array($form['actions'])) {
+      foreach ($form['actions'] as &$action) {
+        if (isset($action['#type']) && $action['#type'] === 'submit') {
+          $action['#access'] = FALSE;
+        }
+      }
+    }
+
+    // --- Hide the quantity field ---
+    if (isset($form['quantity'])) {
+      $form['quantity']['#access'] = FALSE;
+    }
+
+    // --- Hide the order item type dropdown fields ---
+    // In many Drupal Commerce setups, the product variation’s attributes are placed under
+    // $form['purchased_entity']['attributes']. We will check for a key that contains our
+    // custom order type identifier ("custom_clothing_variation") and hide that element.
+    if (isset($form['purchased_entity']['attributes']) && is_array($form['purchased_entity']['attributes'])) {
+      foreach ($form['purchased_entity']['attributes'] as $attribute_key => &$attribute) {
+        // If your custom order type identifier is part of the key, hide that element.
+        if (strpos($attribute_key, 'custom_clothing_variation') !== FALSE) {
+          $attribute['#access'] = FALSE;
+          \Drupal::logger('gganon')->notice("Hiding attribute with key: $attribute_key");
+        }
+      }
+    }
+
+    // Attach the custom library that hides the target div.
+    $form['#attached']['library'][] = 'gganon/hide-div';
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function gganon_page_attachments(array &$attachments)
+{
+  if (\Drupal::currentUser()->isAnonymous()) {
+    // Attach the custom library that hides the target div.
+    $attachments['#attached']['library'][] = 'gganon/hide-div';
+  }
+}

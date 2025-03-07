@@ -1,0 +1,9 @@
+name: Shop Ford Dealer Anonmymous User
+type: module
+description: Custom module to hide 'add to cart' for anonmyous roles.
+core: "8.x"
+core_version_requirement: ^8 || ^9
+package: Custom
+dependencies:
+  - commerce:commerce_cart
+  - commerce:commerce_product

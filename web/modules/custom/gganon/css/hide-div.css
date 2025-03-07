@@ -1,0 +1,13 @@
+/* Hide the div with ID 'my-target-div' */
+
+[id^="edit-field-logo-style-wrapper"] {
+  display: none !important;
+}
+
+[id^="edit-field-logo-type-headwear-wrapper"] {
+  display: none !important;
+}
+
+[id^="edit-field-logo-type-beanie-wrapper"] {
+  display: none !important;
+}
