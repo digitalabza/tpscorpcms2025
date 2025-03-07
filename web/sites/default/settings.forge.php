@@ -20,6 +20,12 @@ $settings['hash_salt'] = 'dc75023fe71bd42038fbb864ba03b0859b8c4427709337beec9f69
 // Set a default private files directory outside of the docroot.
 $settings['file_private_path'] = '../private';
 
+
+// Set a default public files directory outside of the docroot.
+$settings['file_public_path'] = 'sites/default/files';
+$config['system.file']['path.temporary'] = '/tmp';
+
+
 // Set a default config sync directory outside of the docroot.
 // This is defined inside the read-only "config" directory, deployed via Git.
 $settings['config_sync_directory'] = '../config/sync';
