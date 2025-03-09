@@ -253,6 +253,26 @@
                       {% endif %}
                       {# / Product Overview tab. #}
 
+                      {# Size Guide Overview tab. #}
+                      {% if product_entity.field_size_guide.value %}
+                        <li role="presentation" class="">
+                          <a href="#sizeguide" aria-controls="sizeguide" role="tab" data-toggle="tab">
+                            {{ 'Size Guide'|t }}
+                          </a>
+                        </li>
+                      {% endif %}
+                      {# / Size Guide Overview tab. #}
+
+                      {# Wash Care Overview tab. #}
+                      {% if product_entity.field_size_guide.value %}
+                        <li role="presentation" class="">
+                          <a href="#washcare" aria-controls="washcare" role="tab" data-toggle="tab">
+                            {{ 'Wash Care Instructions'|t }}
+                          </a>
+                        </li>
+                      {% endif %}
+                      {# / Wash Care Overview tab. #}
+
                       {# Tabs added from the user. #}
                       {% if product_entity.field_paragraphs_reference.0.target_id %}
                         {% for tab in product_entity.field_paragraphs_reference %}
@@ -292,11 +312,30 @@
                       {# Product Overview tab content. #}
                       {% if product_entity.body.value %}
                         <div role="tabpanel" class="tab-pane fade active in" id="description">
-                          <h2 class="tab-pane__title">{{ 'Product Overview'|t }}</h2>
+                          {# <h2 class="tab-pane__title">{{ 'Product Overview'|t }}</h2> #}
                           {{ product.body }}
                         </div>
                       {% endif %}
                       {# / Product Overview tab content. #}
+
+                     {# Size Guide Overview tab. #}
+                      {% if product_entity.field_size_guide.value %}
+                        <div role="tabpanel" class="tab-pane fade" id="sizeguide">
+                          {# <h2 class="tab-pane__title">{{ 'Size Guide'|t }}</h2> #}
+                          {# {{ product.body }} #}
+                        </div>
+                      {% endif %}
+                      {# / Size Guide Overview tab. #}
+
+
+                     {# Wash Care Overview tab. #}
+                      {% if product_entity.field_gender.value %}
+                        <div role="tabpanel" class="tab-pane fade" id="washcare">
+                          {# <h2 class="tab-pane__title">{{ 'Wash Care Instructions'|t }}</h2> #}
+                          {# {{ product.body }} #}
+                        </div>
+                      {% endif %}
+                      {# / Wash Care Overview tab. #}
 
                       {# Tabs content added from the user. #}
                       {% if product_entity.field_paragraphs_reference.0.target_id %}
