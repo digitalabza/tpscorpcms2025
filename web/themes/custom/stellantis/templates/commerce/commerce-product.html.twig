@@ -264,7 +264,7 @@
                       {# / Size Guide Overview tab. #}
 
                       {# Wash Care Overview tab. #}
-                      {% if product_entity.field_size_guide.value %}
+                      {% if product_entity.field_wash_care_instructions.value %}
                         <li role="presentation" class="">
                           <a href="#washcare" aria-controls="washcare" role="tab" data-toggle="tab">
                             {{ 'Wash Care Instructions'|t }}
@@ -322,17 +322,17 @@
                       {% if product_entity.field_size_guide.value %}
                         <div role="tabpanel" class="tab-pane fade" id="sizeguide">
                           {# <h2 class="tab-pane__title">{{ 'Size Guide'|t }}</h2> #}
-                          {# {{ product.body }} #}
+                          {{ product.field_size_guide }}
                         </div>
                       {% endif %}
                       {# / Size Guide Overview tab. #}
 
 
                      {# Wash Care Overview tab. #}
-                      {% if product_entity.field_gender.value %}
+                      {% if product_entity.field_wash_care_instructions.value %}
                         <div role="tabpanel" class="tab-pane fade" id="washcare">
                           {# <h2 class="tab-pane__title">{{ 'Wash Care Instructions'|t }}</h2> #}
-                          {# {{ product.body }} #}
+                          {{ product.field_wash_care_instructions }}
                         </div>
                       {% endif %}
                       {# / Wash Care Overview tab. #}
