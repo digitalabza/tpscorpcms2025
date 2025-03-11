@@ -46,6 +46,7 @@
     "drupal/google_analytics": "^3.1",
     "drupal/jquery_ui": "1.6",
     "drupal/login_destination": "^2.0@beta",
+    "drupal/login_emailusername": "^2.1",
     "drupal/login_history": "^1.1",
     "drupal/menu_block": "1.10",
     "drupal/orange_ecom_profile": "^2.0@alpha",
