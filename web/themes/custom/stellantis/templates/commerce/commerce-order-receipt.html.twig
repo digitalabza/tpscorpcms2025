@@ -21,152 +21,165 @@
  */
 #}
 {# mytheme/templates/commerce-order-receipt.html.twig #}
-<table style="margin: 0 auto; padding: 0; width: 100%; max-width: 650px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #ffffff; color: #333333;">
-  <tbody>
-    <tr>
-      <td style="padding: 10px;">
-        {# Logo #}
-        <div style="text-align: center; margin: 0 0 20px 0;">
-          {# <img src="https://example.com/path/to/your/logo.png" alt="Shop Ford Dealer Logo" style="max-width: 100%; height: auto; display: block; margin: 0 auto;"> #}
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>{{ 'Order Request Confirmation'|t }}</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4;">
 
-        {# Shop Address and Date #}
-        <table style="margin: 0 auto; width: 100%; text-align: right;">
-          <tbody>
-            <tr>
-              <td style="font-size: 13px; padding-bottom: 2px; color: #333333;">
-                {{ 'Shop Ford Dealer \n7 Angus Crescent \Longmeadow East Business Estate \nEdenvale \n2090' |nl2br|t }}
-              </td>
-            </tr>
-            <tr>
-              <td style="font-size: 14px; font-weight: bold; padding-bottom: 2px; padding-top: 18px; color: #333333;">
-                {{ 'Date: @date'|t({'@date': order_entity.getPlacedTime|date("d/m/Y - H:i")}) }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  {# Main Centered Content #}
+  <center>
+    <table style="margin: 0 auto; padding: 0; width: 100%; max-width: 650px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #ffffff; color: #333333;" align="center">
+      <tbody>
+        <tr>
+          <td style="padding: 10px;">
+            {# Logo #}
+            <div style="text-align: center; margin: 0 0 20px 0;">
+              {# Uncomment and adjust logo as needed #}
+              {# <img src="https://example.com/path/to/your/logo.png" alt="Shop Ford Dealer Logo" style="max-width: 100%; height: auto; display: block; margin: 0 auto;"> #}
+            </div>
 
-        {# Main Content #}
-        <table style="text-align: center; width: 100%; margin: 5px auto 0 auto; padding: 10px; background-color: #ffffff;">
-          <tbody>
-            <tr>
-              <td style="font-size: 20px; padding-bottom: 30px; color: #333333;">{{ 'Order Request Confirmation'|t }}</td>
-            </tr>
-            <tr>
-              <td style="font-weight: bold; padding: 15px 0; text-align: left; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc; color: #333333;">
-                {{ 'Order #@number Details:'|t({'@number': order_entity.getOrderNumber}) }}
-              </td>
-            </tr>
-            <tr>
-              <td style="vertical-align: top;">
-                {% block order_items %}
-                  <table style="padding: 10px 0; width: 100%; font-size: 13px;">
-                    <tbody style="text-align: left;">
-                      {% for order_item in order_entity.getItems %}
-                        <tr>
-                          <td style="vertical-align: top; padding: 5px 0;">
-                            {{ order_item.getQuantity|number_format }} x
-                          </td>
-                          <td style="vertical-align: top; padding: 5px 0;">
-                            {# <span>{{ order_item.label }}</span><br> #}
-                            <span>{{ order_item.label }}</span>
-                            <span>{{ order_item.getPurchasedEntity|commerce_entity_render('receipt') }}</span>
-                          </td>
-                          <td style="vertical-align: top; padding: 5px 0; text-align: right;">
-                            <span>{{ order_item.getTotalPrice|commerce_price_format }}</span>
-                          </td>
-                        </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
-                {% endblock %}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                {% if (billing_information or shipping_information) %}
-                  <table style="width: 100%; font-size: 14px; padding: 15px 0; text-align: left; border-top: 1px solid #ececec; border-bottom: 1px solid #ececec;">
-                    <tbody>
-                      <tr>
-                        {% if shipping_information %}
-                          <td style="padding-top: 10px; font-weight: bold; vertical-align: top; color: #333333;">{{ 'Shipping Information'|t }}</td>
-                        {% endif %}
-                        {% if billing_information %}
-                          <td style="padding-top: 10px; font-weight: bold; vertical-align: top; color: #333333;">{{ 'Billing Information'|t }}</td>
-                        {% endif %}
-                      </tr>
-                      <tr>
-                        {% if shipping_information %}
-                          <td style="vertical-align: top; width: 50%; padding: 5px 0;">
-                            {% block shipping_information %}
-                              {{ shipping_information }}
-                            {% endblock %}
-                          </td>
-                        {% endif %}
-                        {% if billing_information %}
-                          <td style="vertical-align: top; width: 50%; padding: 5px 0;">
-                            {% block billing_information %}
-                              {{ billing_information }}
-                            {% endblock %}
-                          </td>
-                        {% endif %}
-                      </tr>
-                      {% if shipping_information %}
-                        <tr>
-                          <td style="padding-top: 10px; font-size: 14px;">
-                            {{ 'Purchase Order Number: \n@purchaseordernumber' |nl2br|t ({'@purchaseordernumber': order_entity.field_purchase_order_number.value }) }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="font-size: 14px; font-weight: 600; padding-top: 10px; color: #333333;">
-                            {{ 'Delivery is 7-10 working days from order confirmation or payment. No returns on branded items, other than manufacturing defects.'|t }}
-                          </td>
-                        </tr>
-                      {% endif %}
-                      {% if payment_method %}
-                        <tr>
-                          <td style="font-size: 14px; padding-top: 40px; vertical-align: top; color: #333333;">{{ 'Payment Method'|t }}</td>
-                        </tr>
-                        <tr>
-                          <td style="vertical-align: top; padding: 5px 0;">
-                            {% block payment_method %}
-                              <p>{{ payment_method }}</p>
-                            {% endblock %}
-                          </td>
-                        </tr>
-                      {% endif %}
-                    </tbody>
-                  </table>
-                {% endif %}
-              </td>
-            </tr>
-            <tr>
-              <td style="padding-top: 10px; padding-right: 10px; text-align: right;">
-                {{ 'Subtotal: @subtotal'|t({'@subtotal': totals.subtotal|commerce_price_format}) }}
-              </td>
-            </tr>
-            {% for adjustment in totals.adjustments %}
-              <tr>
-                <td style="padding-top: 5px; padding-right: 10px; text-align: right;">
-                  {{ adjustment.label }}: {{ adjustment.total|commerce_price_format }}
-                </td>
-              </tr>
-            {% endfor %}
-            <tr>
-              <td style="padding-top: 5px; padding-bottom: 10px; padding-right: 10px; font-size: 18px; text-align: right; font-weight: bold; color: #333333;">
-                {{ 'Order Total: @total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }}
-              </td>
-            </tr>
-            <tr>
-              <td style="padding: 20px 0; border-top: 1px solid #ececec; font-size: 12px; text-align: center; color: #666666;">
-                {% block additional_information %}
-                  {{ 'Thank you for placing your order with Shop Ford Dealer \nOrder queries: orders@shopforddealer.co.za' |nl2br|t }}
-                {% endblock %}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-  </tbody>
-</table>
+            {# Shop Address and Date #}
+            <table style="margin: 0 auto; width: 100%; text-align: right;">
+              <tbody>
+                <tr>
+                  <td style="font-size: 14px; padding-bottom: 2px; color: #333333;">
+                    {{ 'Shop Ford Dealer \n7 Angus Crescent \Longmeadow East Business Estate \nEdenvale \n2090' |nl2br|t }}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-size: 14px; font-weight: bold; padding-bottom: 2px; padding-top: 18px; color: #333333;">
+                    {{ 'Date: @date'|t({'@date': order_entity.getPlacedTime|date("d/m/Y - H:i")}) }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {# Main Content #}
+            <table style="text-align: center; width: 100%; margin: 5px auto 0 auto; padding: 10px; background-color: #ffffff;">
+              <tbody>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 30px; color: #333333;">{{ 'Order Request Confirmation'|t }}</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: bold; padding: 15px 0; text-align: left; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc; color: #333333;">
+                    {{ 'Order #@number Details:'|t({'@number': order_entity.getOrderNumber}) }}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="vertical-align: top;">
+                    {% block order_items %}
+                      <table style="padding: 10px 0; width: 100%; font-size: 14px;">
+                        <tbody style="text-align: left;">
+                          {% for order_item in order_entity.getItems %}
+                            <tr>
+                              <td style="vertical-align: top; padding: 5px 0;">
+                                {{ order_item.getQuantity|number_format }} x
+                              </td>
+                              <td style="vertical-align: top; padding: 5px 0;">
+                                <span>{{ order_item.label }}</span>
+                                <span>{{ order_item.getPurchasedEntity|commerce_entity_render('receipt') }}</span>
+                              </td>
+                              <td style="vertical-align: top; padding: 5px 0; text-align: right;">
+                                <span>{{ order_item.getTotalPrice|commerce_price_format }}</span>
+                              </td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    {% endblock %}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {% if (billing_information or shipping_information) %}
+                      <table style="width: 100%; font-size: 14px; padding: 15px 0; text-align: left; border-top: 1px solid #ececec; border-bottom: 1px solid #ececec;">
+                        <tbody>
+                          <tr>
+                            {% if shipping_information %}
+                              <td style="padding-top: 10px; font-weight: bold; vertical-align: top; color: #333333;">{{ 'Shipping Information'|t }}</td>
+                            {% endif %}
+                            {% if billing_information %}
+                              <td style="padding-top: 10px; font-weight: bold; vertical-align: top; color: #333333;">{{ 'Billing Information'|t }}</td>
+                            {% endif %}
+                          </tr>
+                          <tr>
+                            {% if shipping_information %}
+                              <td style="vertical-align: top; width: 50%; padding: 5px 0;">
+                                {% block shipping_information %}
+                                  {{ shipping_information }}
+                                {% endblock %}
+                              </td>
+                            {% endif %}
+                            {% if billing_information %}
+                              <td style="vertical-align: top; width: 50%; padding: 5px 0;">
+                                {% block billing_information %}
+                                  {{ billing_information }}
+                                {% endblock %}
+                              </td>
+                            {% endif %}
+                          </tr>
+                          {% if shipping_information %}
+                            <tr>
+                            <td style="padding-top: 10px; font-size: 14px;">
+                              {{ '<span style="font-weight: 600">Purchase Order Number:</span> \n@purchaseordernumber' |nl2br|t ({'@purchaseordernumber': order_entity.field_purchase_order_number.value }) }}
+                            </td>
+                          </tr>
+                            <tr>
+                              <td style="font-size: 14px; font-weight: 600; padding-top: 10px; color: #333333;">
+                                {{ 'Delivery is 7-10 working days from order confirmation or payment. No returns on branded items, other than manufacturing defects.'|t }}
+                              </td>
+                            </tr>
+                          {% endif %}
+                          {% if payment_method %}
+                            <tr>
+                              <td style="font-size: 14px; padding-top: 40px; vertical-align: top; color: #333333;">{{ 'Payment Method'|t }}</td>
+                            </tr>
+                            <tr>
+                              <td style="vertical-align: top; padding: 5px 0;">
+                                {% block payment_method %}
+                                  <p>{{ payment_method }}</p>
+                                {% endblock %}
+                              </td>
+                            </tr>
+                          {% endif %}
+                        </tbody>
+                      </table>
+                    {% endif %}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top: 5px; padding-right: 10px; text-align: right;">
+                    {{ 'Subtotal: @subtotal'|t({'@subtotal': totals.subtotal|commerce_price_format}) }}
+                  </td>
+                </tr>
+                {% for adjustment in totals.adjustments %}
+                  <tr>
+                    <td style="padding-top: 2px; padding-right: 10px; text-align: right;">
+                      {{ adjustment.label }}: {{ adjustment.total|commerce_price_format }}
+                    </td>
+                  </tr>
+                {% endfor %}
+                <tr>
+                  <td style="padding-top: 2px; padding-bottom: 10px; padding-right: 10px; font-size: 18px; text-align: right; font-weight: bold; color: #333333;">
+                    {{ 'Order Total: @total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 20px 0; border-top: 1px solid #ececec; font-size: 12px; text-align: center; color: #666666;">
+                    {% block additional_information %}
+                      {{ 'Thank you for placing your order with Shop Ford Dealer \nOrder queries: orders@shopforddealer.co.za' |nl2br|t }}
+                    {% endblock %}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </center>
+</body>
+</html>
