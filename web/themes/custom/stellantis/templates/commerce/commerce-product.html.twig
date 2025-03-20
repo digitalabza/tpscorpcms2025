@@ -195,7 +195,15 @@
                         {{ 'Average Rating'|t }}: {{ average_star_rating_stars }}
                       </div>
                     {% endif %}
+
                   </div>
+
+                  {% if product.field_arriving_soon %}
+                        <div class="product__promotions">
+                          {{ product.field_arriving_soon }}
+                        </div>
+                      {% endif %}
+
                   {% if product_summary %}
                     <div class="product__summary">
                       {{ product.field_text_long }}
