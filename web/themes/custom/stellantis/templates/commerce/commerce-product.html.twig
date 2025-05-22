@@ -198,7 +198,13 @@
 
                   </div>
 
-                  {% if product.field_arriving_soon %}
+                  {% if product.field_notes %}
+                        <div class="product__promotions">
+                          {{ product.field_notes }}
+                        </div>
+                      {% endif %}
+
+                    {% if product.field_arriving_soon %}
                         <div class="product__promotions">
                           {{ product.field_arriving_soon }}
                         </div>
