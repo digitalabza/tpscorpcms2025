@@ -15,7 +15,7 @@ $databases['default']['default'] = [
 ];
 $databases['default']['default']['namespace'] = 'Drupal\\Core\\Database\\Driver\\mysql';
 
-$settings['hash_salt'] = 'dc75023fe71bd42038fbb864ba03b0859b8c4427709337beec9f694c1f548abd';
+$settings['hash_salt'] = 'f3883c7ea4cd944b93cb7246421d48a51da8e0ec8d72506e0620aeeb8d5775f4';
 
 // Set a default private files directory outside of the docroot.
 $settings['file_private_path'] = '../private';
@@ -34,10 +34,10 @@ $settings['config_sync_directory'] = '../config/sync';
 $settings['skip_permissions_hardening'] = TRUE;
 
 // Trusted host pattern.
-$settings['trusted_host_patterns'] = array(
-  '^shopforddealer\.co.za$',
-  '^.+\.shopforddealer\.co.za$',
-);
+// $settings['trusted_host_patterns'] = array(
+//   '^shopforddealer\.co.za$',
+//   '^.+\.shopforddealer\.co.za$',
+// );
 
 /**
  * Disable tracking scripts.
