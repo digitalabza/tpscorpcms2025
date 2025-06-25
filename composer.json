@@ -6,7 +6,6 @@
   "require": {
     "ext-curl": "*",
     "bgrins/spectrum": "master",
-    "centarro/centarro_claro": "1.x-dev",
     "ckeditor/ckeditor": "4.11.4",
     "ckeditor/colorbutton": "4.7.3",
     "ckeditor/font": "4.7.3",

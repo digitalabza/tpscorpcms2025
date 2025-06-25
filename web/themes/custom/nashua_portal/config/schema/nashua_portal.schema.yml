@@ -1,5 +1,0 @@
-# Schema for the configuration files of the theme.
-
-nashua_portal.settings:
-  type: theme_settings
-  label: 'Orange E-Commerce Starter Settings'

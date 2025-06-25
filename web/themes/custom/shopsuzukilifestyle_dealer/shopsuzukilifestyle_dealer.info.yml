@@ -1,0 +1,46 @@
+name: Shop Suzuki Lifestyle B2B Commerce Portal
+type: theme
+description: Shop Suzuki Lifestyle B2B Commerce Ordering Portal.
+package: CodeWrx
+core_version_requirement: ^8.9 || ^9
+base theme: classy
+
+dependencies:
+  # - drupal:twig_tweak
+
+libraries:
+  - shopsuzukilifestyle_dealer/global-styling
+
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/menu.css: false
+  orange_framework/bootstrap: shopsuzukilifestyle_dealer/bootstrap
+  # Remove commerce styles since we use our own.
+  commerce_checkout/login_pane: false
+  commerce_checkout/form: false
+
+ckeditor_stylesheets:
+  - css/style.css
+
+regions:
+  above_site: "Above Site"
+  site_search: "Site Search"
+  header: "Header"
+  highlighted: "Highlighted"
+  above_content: "Above Content"
+  content: "Content"
+  below_content: "Below Content"
+  left_sidebar: "Left Sidebar"
+  right_sidebar: "Right Sidebar"
+  store_filters: "Store Filters"
+  store_facets: "Store Facets"
+  footer: "Footer"
+  # Navigation.
+  mobile_nav: "Mobile Navigation"
+  user_nav: "User Navigation"
+  header_nav: "Header Navigation"
+  primary_nav: "Primary Navigation"
+  footer_nav: "Footer Navigation"
+  social_nav: "Social Media Navigation"

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9286155fe65322e9c4553b1159ec857d",
+    "content-hash": "ad557f56731978276d1918b80f8931fb",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -139,33 +139,6 @@
                 "reference": "origin/master"
             },
             "type": "drupal-library"
-        },
-        {
-            "name": "centarro/centarro_claro",
-            "version": "1.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/centarro/centarro_claro.git",
-                "reference": "8f32d8ae8fa43902c1648ee1bb042ade4253cf5d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/centarro/centarro_claro/zipball/8f32d8ae8fa43902c1648ee1bb042ade4253cf5d",
-                "reference": "8f32d8ae8fa43902c1648ee1bb042ade4253cf5d",
-                "shasum": ""
-            },
-            "default-branch": true,
-            "type": "drupal-theme",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "description": "Admin theme based on Claro used for Centarro projects.",
-            "support": {
-                "issues": "https://github.com/centarro/centarro_claro/issues",
-                "source": "https://github.com/centarro/centarro_claro/tree/1.x"
-            },
-            "time": "2024-02-12T11:27:24+00:00"
         },
         {
             "name": "chi-teck/drupal-code-generator",
@@ -20230,7 +20203,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "centarro/centarro_claro": 20,
         "drupal/commerce_feeds": 15,
         "drupal/feeds": 10,
         "drupal/feeds_tamper": 10,
