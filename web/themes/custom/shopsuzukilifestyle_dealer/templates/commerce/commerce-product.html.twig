@@ -180,6 +180,9 @@
                   <div class="product__price">
                     {{ 'Dealer'|t }}: {{ product.variation_price }} {{ 'excl VAT'|t }}
                   </div>
+                  <div class="product__price">
+                    {{ 'RRP'|t }}: {{ product.variation_field_rrp }} {{ 'incl VAT'|t }}
+                  </div>
                   {% if product.variation_list_price %}
                     <div class="product__list-price">
                       {{ product.variation_list_price }}
@@ -257,6 +260,7 @@
                   <div class="product__tabs">
                     {# Tabs. #}
                     <ul id="product-tabs" class="nav nav-tabs" role="tablist">
+
                       {# Product Overview tab. #}
                       {% if product_entity.body.value %}
                         <li role="presentation" class="active">
@@ -298,7 +302,7 @@
                           {% if loop.first and not product_entity.body.value %}
                             {% set tab_li_class = 'active' %}
                           {% else %}
-                            {% set tab_li_class = '' %}
+                            {% set tab_li_class = 'washcare' %}
                           {% endif %}
 
                           <li role="presentation" class="{{ tab_li_class }}">
