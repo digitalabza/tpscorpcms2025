@@ -28,24 +28,24 @@
 				<div class="user-dashboard__nav-link__description">{{ 'Update password'|t }}</div>
 			</a>
 		{% endif %}
-		{% if user.hasPermission('manage own commerce_payment_method') %}
-			<a href="{{ base_path }}user/{{ user.id }}/payment-methods" class="user-dashboard__nav-link user-dashboard__nav-link--payment-methods">
-				<div class="user-dashboard__nav-link__title">{{ 'Payment Methods'|t }}</div>
-				<div class="user-dashboard__nav-link__description">{{ 'Manage your payment types'|t }}</div>
-			</a>
-		{% endif %}
+		{# {% if user.hasPermission('manage own commerce_payment_method') %}
+									<a href="{{ base_path }}user/{{ user.id }}/payment-methods" class="user-dashboard__nav-link user-dashboard__nav-link--payment-methods">
+										<div class="user-dashboard__nav-link__title">{{ 'Payment Methods'|t }}</div>
+										<div class="user-dashboard__nav-link__description">{{ 'Manage your payment types'|t }}</div>
+									</a>
+								{% endif %} #}
 		{% if user.hasPermission('view own commerce_order') %}
 			<a href="{{ base_path }}user/{{ user.id }}/orders" class="user-dashboard__nav-link user-dashboard__nav-link--orders">
 				<div class="user-dashboard__nav-link__title">{{ 'Order History'|t }}</div>
 				<div class="user-dashboard__nav-link__description">{{ 'Order history'|t }}</div>
 			</a>
 		{% endif %}
-		{% if user.hasPermission('view own profile') %}
-			<a href="{{ base_path }}user/{{ user.id }}/address-book" class="user-dashboard__nav-link user-dashboard__nav-link--address-book">
-				<div class="user-dashboard__nav-link__title">{{ 'Address Book'|t }}</div>
-				<div class="user-dashboard__nav-link__description">{{ 'Edit shipping & billing addresses'|t }}</div>
-			</a>
-		{% endif %}
+		{# {% if user.hasPermission('view own profile') %}
+					<a href="{{ base_path }}user/{{ user.id }}/address-book" class="user-dashboard__nav-link user-dashboard__nav-link--address-book">
+						<div class="user-dashboard__nav-link__title">{{ 'Address Book'|t }}</div>
+						<div class="user-dashboard__nav-link__description">{{ 'Shipping address'|t }}</div>
+					</a>
+				{% endif %} #}
 	</div>
 
 	{% if content %}
