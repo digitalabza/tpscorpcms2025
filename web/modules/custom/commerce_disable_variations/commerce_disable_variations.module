@@ -1,0 +1,67 @@
+<?php
+
+use Drupal\commerce_product\Entity\ProductInterface;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function commerce_disable_variations_page_attachments(array &$page)
+{
+    // Only attach on the product canonical route.
+    if (\Drupal::routeMatch()->getRouteName() !== 'entity.commerce_product.canonical') {
+        return;
+    }
+    $product = \Drupal::routeMatch()->getParameter('commerce_product');
+    if (!($product instanceof ProductInterface)) {
+        return;
+    }
+
+    /** @var \Drupal\commerce_stock\StockServiceManagerInterface $sm */
+    $sm = \Drupal::service('commerce_stock.service_manager');
+
+    $stockData        = [];
+    $variationOrder   = [];
+    $termAvailability = [];
+    // Your two attribute fields.
+    $attributeFields  = ['attribute_sizes', 'attribute_colour'];
+
+    foreach ($product->getVariations() as $variation) {
+        $vid = $variation->id();
+        $variationOrder[]  = $vid;
+        $stockData[$vid]   = (float) $sm->getStockLevel($variation);
+
+        foreach ($attributeFields as $field) {
+            if ($variation->hasField($field) && !$variation->get($field)->isEmpty()) {
+                $term = $variation->getAttributeValue($field);
+                if ($term) {
+                    $label = $term->label();
+                    // Initialize if needed.
+                    if (!isset($termAvailability[$field][$label])) {
+                        $termAvailability[$field][$label] = ($stockData[$vid] > 0);
+                    }
+                    // If any variation for this label has stock, keep it TRUE.
+                    if ($stockData[$vid] > 0) {
+                        $termAvailability[$field][$label] = TRUE;
+                    }
+                }
+            }
+        }
+    }
+
+    // Attach JS/CSS & pass your maps into drupalSettings.
+    $page['#attached']['library'][] = 'commerce_disable_variations/out_of_stock';
+    $page['#attached']['drupalSettings']['commerceDisableVariations'] = [
+        'stockData'        => $stockData,
+        'variationOrder'   => $variationOrder,
+        'termAvailability' => $termAvailability,
+    ];
+
+    // ——— CACHE TAGS ——————————————————————————————————————————————
+    // So when stock or any variation changes, this product page will rebuild.
+    $page['#cache']['tags'][] = 'commerce_product:' . $product->id();
+    foreach ($product->getVariations() as $v) {
+        $page['#cache']['tags'][] = 'commerce_product_variation:' . $v->id();
+    }
+    // Tag the stock system itself.
+    $page['#cache']['tags'][] = 'commerce_stock';
+}

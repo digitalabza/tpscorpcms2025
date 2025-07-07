@@ -1,0 +1,9 @@
+services:
+  commerce_default_variant.subscriber:
+    class: Drupal\commerce_default_variant\EventSubscriber\CommerceDefaultVariantSubscriber
+    arguments:
+      - "@entity_type.manager"
+      - "@commerce_stock.service_manager"
+      - "@logger.factory"
+    tags:
+      - { name: event_subscriber }

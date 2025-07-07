@@ -1,0 +1,18 @@
+/* Strike-through & grey text on the actual label/text container */
+.form-item.out-of-stock .attribute-value,
+.form-item.out-of-stock .field__item {
+  color: #aaa !important;
+  text-decoration: line-through !important;
+  opacity: 0.6 !important;
+}
+
+/* Show not-allowed cursor on the wrapper */
+.form-item.no-hover {
+  cursor: not-allowed !important;
+}
+
+/* Disable pointer events on the actual clickable elements, but not on the wrapper */
+.form-item.no-hover input,
+.form-item.no-hover label {
+  pointer-events: none !important;
+}

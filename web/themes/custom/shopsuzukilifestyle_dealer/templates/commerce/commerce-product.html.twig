@@ -177,12 +177,21 @@
                   {% endif %}
                   {# / Brands. #}
                   <h2 class="product__title">{{ product.title }}</h2>
+
+                  {% if logged_in %}
                   <div class="product__price">
                     {{ 'Dealer'|t }}: {{ product.variation_price }} {{ 'excl VAT'|t }}
                   </div>
                   <div class="product__price">
                     {{ 'RRP'|t }}: {{ product.variation_field_rrp }} {{ 'incl VAT'|t }}
                   </div>
+                  {% else %}
+                  <div class="product__price">
+                    {{ 'RRP'|t }}: {{ product.variation_field_rrp }} {{ 'incl VAT'|t }}
+                  </div>
+                  {% endif %}
+
+
                   {% if product.variation_list_price %}
                     <div class="product__list-price">
                       {{ product.variation_list_price }}

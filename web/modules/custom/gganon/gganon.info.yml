@@ -1,6 +1,6 @@
-name: Shop Ford Dealer Anonmymous User
+name: Shop Suzuki Lifestyle Anonmymous User
 type: module
-description: Custom module to hide 'add to cart' for anonmyous roles.
+description: Custom module to hide 'add to cart' for anonmyous roles and display RRP field only.
 core: "8.x"
 core_version_requirement: ^8 || ^9
 package: Custom

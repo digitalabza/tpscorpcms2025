@@ -1,0 +1,11 @@
+out_of_stock:
+  version: 1.x
+  js:
+    js/out_of_stock.js: {}
+  css:
+    theme:
+      css/out_of_stock.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+    - core/once

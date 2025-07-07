@@ -1,0 +1,8 @@
+name: Commerce Disable Variations
+type: module
+description: Disables & greys-out out-of-stock product variation attributes.
+package: Commerce (custom)
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce:commerce
+  - commerce_stock
