@@ -46,7 +46,7 @@
               <tbody>
                 <tr>
                   <td style="font-size: 14px; padding-bottom: 2px; color: #333333;">
-                    {{ 'Shop Suzuki Lifestyle \n7 Angus Crescent \Longmeadow East Business Estate \nEdenvale \n2090' |nl2br|t }}
+                    {{ 'Shop Suzuki Lifestyle | Operated by The Pro Shop Corporate (Pty) LTD \n7 Angus Crescent \nLongmeadow East Business Estate \nEdenvale \n2090' |nl2br|t }}
                   </td>
                 </tr>
                 <tr>
@@ -128,8 +128,8 @@
                             </td>
                           </tr>
                             <tr>
-                              <td style="font-size: 14px; font-weight: 600; padding-top: 10px; color: #333333;">
-                                {{ 'Delivery is 7-10 working days from order confirmation or payment. No returns on branded items, other than manufacturing defects.'|t }}
+                              <td style="font-size: 14px; padding-top: 10px; color: #333333;">
+                                {{ '<span style="font-weight: 600">Additional Comments:</span> \n@additionalcomments' |nl2br|t ({'@additionalcomments': order_entity.field_additional_comments.value }) }}
                               </td>
                             </tr>
                           {% endif %}
