@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Contains commerce_sold_today.module.
+ */
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function commerce_sold_today_views_data_alter(array &$data)
+{
+    // Ensure we have the commerce_product base table.
+    if (isset($data['commerce_product'])) {
+        $data['commerce_product']['sold_today'] = [
+            'title' => t('Sold Today'),
+            'help' => t('Indicator whether the product has been sold today.'),
+            'field' => [
+                'id' => 'sold_today_field',
+            ],
+        ];
+    }
+}

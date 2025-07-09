@@ -73,20 +73,52 @@
                     {% block order_items %}
                       <table style="padding: 10px 0; width: 100%; font-size: 14px;">
                         <tbody style="text-align: left;">
-                          {% for order_item in order_entity.getItems %}
+
+
+                          {# {% for order_item in order_entity.getItems %}
                             <tr>
                               <td style="vertical-align: top; padding: 5px 0;">
                                 {{ order_item.getQuantity|number_format }} x
                               </td>
                               <td style="vertical-align: top; padding: 5px 0;">
-                                <span>{{ order_item.label }}</span>
-                                <span>{{ order_item.getPurchasedEntity|commerce_entity_render('receipt') }}</span>
+                                <span class="inline-text">{{ order_item.label }}</span>
+                                <span class="inline-text">{{ order_item.getPurchasedEntity|commerce_entity_render('receipt') }}</span>
                               </td>
                               <td style="vertical-align: top; padding: 5px 0; text-align: right;">
                                 <span>{{ order_item.getTotalPrice|commerce_price_format }}</span>
                               </td>
                             </tr>
-                          {% endfor %}
+                          {% endfor %} #}
+
+                        {% for order_item in order_entity.getItems() %}
+                          {% set variation = order_item.getPurchasedEntity() %}
+                          <tr>
+                            {# Quantity #}
+                            <td style="vertical-align: top; padding: 5px 0; font-size: 14px;">
+                              {{ order_item.getQuantity()|number_format }} ×
+                            </td>
+
+                            {# Product label on one line, SKU on the next #}
+                            <td style="vertical-align: top; padding: 5px 0;">
+                              {# Product name + attributes #}
+                              <span style="display: block; font-size: 14px; line-height: 1.4; margin-bottom: 2px;">
+                                {{ order_item.label }}
+                              </span>
+                              {# SKU line below #}
+                              <span style="display: block; font-size: 14px;">
+                                SKU: {{ variation.sku.value }}
+                              </span>
+                            </td>
+
+                            {# Total price #}
+                            <td style="vertical-align: top; padding: 5px 0; text-align: right; font-size: 14px;">
+                              {{ order_item.getTotalPrice()|commerce_price_format }}
+                            </td>
+                          </tr>
+                        {% endfor %}
+
+
+
                         </tbody>
                       </table>
                     {% endblock %}
@@ -121,18 +153,24 @@
                               </td>
                             {% endif %}
                           </tr>
+
                           {% if shipping_information %}
                             <tr>
                             <td style="padding-top: 10px; font-size: 14px;">
                               {{ '<span style="font-weight: 600">Purchase Order Number:</span> \n@purchaseordernumber' |nl2br|t ({'@purchaseordernumber': order_entity.field_purchase_order_number.value }) }}
                             </td>
                           </tr>
+                          {% endif %}
+
+                          {% if shipping_information %}
                             <tr>
                               <td style="font-size: 14px; padding-top: 10px; color: #333333;">
-                                {{ '<span style="font-weight: 600">Additional Comments:</span> \n@additionalcomments' |nl2br|t ({'@additionalcomments': order_entity.field_additional_comments.value }) }}
+                                {{ '<span style="font-weight: 600">Additional Comments:</span> \n@additionalcomments' |nl2br|t ({'@additionalcomments': order_entity.field_additional_comments.value|default('') }) }}
                               </td>
                             </tr>
                           {% endif %}
+
+
                           {% if payment_method %}
                             <tr>
                               <td style="font-size: 14px; padding-top: 40px; vertical-align: top; color: #333333;">{{ 'Payment Method'|t }}</td>

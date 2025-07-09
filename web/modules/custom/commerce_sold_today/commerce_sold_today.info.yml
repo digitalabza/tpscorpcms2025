@@ -1,0 +1,7 @@
+name: "Commerce Sold Today"
+type: module
+description: "Provides a custom Views field to indicate if a product has been sold today."
+core_version_requirement: ^8 || ^9
+package: Custom
+dependencies:
+  - commerce
