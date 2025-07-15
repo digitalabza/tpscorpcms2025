@@ -1,5 +1,0 @@
-# Schema for the configuration files of the theme.
-
-shopsuzukilifestyle_dealer.settings:
-  type: theme_settings
-  label: "Shop Suzuki Lifestyle B2B Commerce Settings"

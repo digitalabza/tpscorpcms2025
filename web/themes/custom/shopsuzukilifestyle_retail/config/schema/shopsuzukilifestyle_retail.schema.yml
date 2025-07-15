@@ -1,0 +1,5 @@
+# Schema for the configuration files of the theme.
+
+shopsuzukilifestyle_retail.settings:
+  type: theme_settings
+  label: "Shop Suzuki Lifestyle B2C Commerce Settings"
