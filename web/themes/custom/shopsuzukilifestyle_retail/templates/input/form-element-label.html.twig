@@ -19,7 +19,8 @@
 {# Check for the address line 2 field. #}
 {% if (element_id) and ('address-line2' in element_id) %}
   {% set is_address_line2 = true %}
-  {% set label_text = 'Apartment, suite, etc.'|t %}
+  {# {% set label_text = 'Apartment, suite, etc.'|t %} #}
+  {% set label_text = 'Street address 2'|t %}
   {% set title = label_text %}
 {% else %}
   {% set title = title %}
@@ -48,7 +49,7 @@
       <span class="form-required"> *</span>
     {% else %}
       {% if (element_type != 'radio') and (element_type != 'checkbox') %}
-        <span class="form-optional {{ not is_address_line2 and title_display == 'invisible' ? 'sr-only' : '' }}"> - {{ 'Optional'|t }}</span>
+        {# <span class="form-optional {{ not is_address_line2 and title_display == 'invisible' ? 'sr-only' : '' }}"> - {{ 'Optional'|t }}</span> #}
       {% endif %}
     {% endif %}
   </label>

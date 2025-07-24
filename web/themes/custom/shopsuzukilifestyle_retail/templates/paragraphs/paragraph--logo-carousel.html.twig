@@ -38,7 +38,7 @@
  * @ingroup themeable
  */
 #}
-{{ attach_library('stellantis/paragraph-logo-carousel') }}
+{{ attach_library('shopsuzukilifestyle_retail/paragraph-logo-carousel') }}
 {%
   set classes = [
     'component-logo-carousel',
@@ -48,15 +48,15 @@
   ]
 %}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          {% block content %}
-            {{ content }}
-          {% endblock %}
-        </div>
-      </div>
-    </div>
-  </div>
+	<div{{attributes.addClass(classes)}}>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					{% block content %}
+						{{ content }}
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock paragraph %}

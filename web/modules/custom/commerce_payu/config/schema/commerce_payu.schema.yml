@@ -1,0 +1,15 @@
+commerce_payu.commerce_payment_gateway.plugin.payu_checkout:
+  type: commerce_payment_gateway_configuration
+  mapping:
+    soap_username:
+      type: string
+      label: 'SOAP Username'
+    soap_password:
+      type: string
+      label: 'SOAP Password'
+    safe_key:
+      type: string
+      label: 'Safe key'
+    production:
+      type: boolean
+      label: 'Production'

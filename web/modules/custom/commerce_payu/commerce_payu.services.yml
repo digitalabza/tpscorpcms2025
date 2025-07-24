@@ -1,0 +1,7 @@
+services:
+  logger.channel.commerce_payu:
+    parent: logger.channel_base
+    arguments:
+      - 'commerce_payu'
+  commerce_payu.currency_calculator:
+    class: Drupal\commerce_payu\CurrencyCalculator

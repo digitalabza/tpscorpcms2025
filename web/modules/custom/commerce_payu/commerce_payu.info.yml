@@ -1,0 +1,11 @@
+name: Commerce PayU
+type: module
+description: 'Provides Commerce integration for PayU Payments.'
+package: Commerce
+# core: 8.x
+dependencies:
+  - commerce:commerce_payment
+
+core: '8.x'
+core_version_requirement: ^8 || ^9
+project: 'commerce_payu'

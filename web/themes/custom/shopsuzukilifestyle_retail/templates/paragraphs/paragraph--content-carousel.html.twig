@@ -38,7 +38,7 @@
  * @ingroup themeable
  */
 #}
-{{ attach_library('stellantis/paragraph-content-carousel') }}
+{{ attach_library('shopsuzukilifestyle_retail/paragraph-content-carousel') }}
 {%
   set classes = [
     'component-content-carousel',
@@ -48,9 +48,9 @@
   ]
 %}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
-    {% block content %}
-      {{ content }}
-    {% endblock %}
-  </div>
+	<div{{attributes.addClass(classes)}}>
+		{% block content %}
+			{{ content }}
+		{% endblock %}
+	</div>
 {% endblock paragraph %}
