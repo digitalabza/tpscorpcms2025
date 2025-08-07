@@ -133,10 +133,10 @@
                           </tr>
                           {% endif %}
 
-                          {% if shipping_information %}
+                          {% if shipping_information and order_entity.field_additional_comments.value %}
                             <tr>
                               <td style="font-size: 14px; padding-top: 10px; color: #333333;">
-                                {{ '<span style="font-weight: 600">Additional Comments:</span> \n@additionalcomments' |nl2br|t ({'@additionalcomments': order_entity.field_additional_comments.value|default('') }) }}
+                                {{ '<span style="font-weight: 600">Additional Comments:</span> \n@additionalcomments' |nl2br|t ({'@additionalcomments': order_entity.field_additional_comments.value }) }}
                               </td>
                             </tr>
                           {% endif %}
@@ -144,13 +144,9 @@
 
                           {% if payment_method %}
                             <tr>
-                              <td style="font-size: 14px; padding-top: 40px; vertical-align: top; color: #333333;">{{ 'Payment Method'|t }}</td>
-                            </tr>
-                            <tr>
-                              <td style="vertical-align: top; padding: 5px 0;">
-                                {% block payment_method %}
-                                  <p>{{ payment_method }}</p>
-                                {% endblock %}
+                              <td style="font-size: 14px; padding-top: 10px; color: #333333;">
+                                <span style="font-weight: 600">{{ 'Payment Method:'|t }}</span><br>
+                                {{ payment_method }}
                               </td>
                             </tr>
                           {% endif %}

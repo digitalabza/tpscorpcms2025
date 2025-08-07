@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ *
+ * Default template for shipments.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - shipment: The rendered shipment fields.
+ *   Use 'shipment' to print them all, or print a subset such as
+ *   'shipment.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ shipment|without('title') }}
+ *   @endcode
+ * - shipment_entity: The shipment entity.
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes }}>
+  {# Custom shipping method display with bold label and double colon #}
+  {% if shipment.shipping_method %}
+    <div class="field field--name-shipping-method field--type-entity-reference field--label-above">
+      <div class="field__label" style="font-size: 14px; font-weight: 600; background: none;">{{ 'Shipping Method:'|t }}</div>
+      <div class="field__item">
+        {{ shipment.shipping_method.0['#markup']|default(shipment_entity.getShippingMethod.getPlugin.getServices[shipment_entity.getShippingService].getLabel) }}
+      </div>
+    </div>
+  {% endif %}
+  
+  {# Display other shipment fields without shipping method #}
+  {{ shipment|without('shipping_method') }}
+</div>
