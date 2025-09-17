@@ -1,0 +1,42 @@
+name: TPS Corp CMS
+type: theme
+description: TPS Corp CMS Base Theme.
+package: CodeWrx
+core_version_requirement: ^8.9 || ^9
+base theme: classy
+
+dependencies:
+  # - drupal:twig_tweak
+
+libraries:
+  - tpscorpcms/global-styling
+
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/menu.css: false
+
+ckeditor_stylesheets:
+  - css/style.css
+
+regions:
+  above_site: "Above Site"
+  site_search: "Site Search"
+  header: "Header"
+  highlighted: "Highlighted"
+  above_content: "Above Content"
+  content: "Content"
+  below_content: "Below Content"
+  left_sidebar: "Left Sidebar"
+  right_sidebar: "Right Sidebar"
+  above_footer: "Above Footer"
+  footer: "Footer"
+  mobile_nav: "Mobile Navigation"
+  user_nav: "User Navigation"
+  header_nav: "Header Navigation"
+  primary_nav: "Primary Navigation"
+  footer_brands: "Footer Brands"
+  footer_logo: "Footer Logo"
+  footer_nav: "Footer Navigation"
+  social_nav: "Social Media Navigation"

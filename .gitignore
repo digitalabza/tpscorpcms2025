@@ -38,3 +38,7 @@
 /.env
 /.env.forge
 /.env.project
+/CLAUDE.md
+/CLAUDE.local.md
+/.claude
+/AGENTS.md

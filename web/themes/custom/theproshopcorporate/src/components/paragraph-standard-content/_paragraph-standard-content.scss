@@ -1,0 +1,14 @@
+//
+// Standard Content
+//
+
+@import "../../scss/init";
+
+.component-standard-content {
+  // Full width variant
+  &--full-width {
+    clear: both;
+    margin: 0 0 60px;
+    padding: 0;
+  }
+}

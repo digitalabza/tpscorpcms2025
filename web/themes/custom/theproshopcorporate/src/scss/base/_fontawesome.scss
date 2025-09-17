@@ -1,0 +1,23 @@
+//
+// FontAwesome Variables and Mixins
+//
+
+// FontAwesome Variables
+$fa-var-chevron-right: \f054;
+$fa-var-chevron-down: \f078;
+
+// FontAwesome Icon Placeholder
+%fa-icon {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+
+// FontAwesome Content Function
+@function fa-content($fa-var) {
+  @return $fa-var;
+}

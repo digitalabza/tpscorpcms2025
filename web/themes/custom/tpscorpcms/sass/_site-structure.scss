@@ -1,0 +1,301 @@
+//
+// Site Structure.
+//
+
+.site-wrapper {
+  position: relative;
+  clear: both;
+}
+
+// CSS Variables for theming
+:root {
+  --header-bg: #0b254f;
+  --header-height: 120px;
+  --header-height-mobile: 80px;
+  --link-color: #fff;
+  --link-hover-color: #fff;
+}
+
+// Prevent horizontal overflow from viewport width header
+html {
+  overflow-x: hidden;
+}
+
+// Scroll behavior
+html {
+  scroll-behavior: smooth;
+
+  // Respect user preferences for reduced motion
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+
+// Site header.
+.site-header {
+  position: relative;
+  min-height: var(--header-height);
+  background: var(--header-bg);
+  z-index: 200;
+
+  // Mobile responsive height
+  @media (max-width: 767px) {
+    min-height: var(--header-height-mobile);
+  }
+}
+.site-header__logo {
+  float: left;
+  margin: 15px 0;
+  padding: 0;
+
+  .logo-normal {
+    display: block;
+    width: 80px;
+    height: 89px;
+
+    // Mobile responsive logo sizing
+    @media (max-width: 767px) {
+      width: 60px;
+      height: 67px;
+    }
+  }
+
+  // Mobile responsive margin
+  @media (max-width: 767px) {
+    margin: 10px 0;
+  }
+}
+
+// Motion preferences support
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+// Site header navigation.
+.site-header-nav {
+  float: right;
+  text-align: right;
+
+  .block,
+  .region {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .menu__link {
+    display: block;
+    margin: 0;
+    padding: 15px;
+    color: var(--link-color);
+
+    &:hover,
+    &:focus {
+      color: var(--link-hover-color);
+    }
+  }
+}
+
+// Site header bottom.
+.site-header__bottom {
+  background-color: var(--header-bg);
+}
+
+// Primary navigation.
+.primary-nav {
+  display: block;
+
+  .menu__link {
+    display: block;
+    margin: 0;
+    padding: 15px;
+    color: var(--link-color);
+
+    &:hover,
+    &:focus {
+      color: var(--link-hover-color);
+    }
+  }
+
+  .menu--child-menu {
+    background-color: var(--header-bg);
+  }
+}
+
+// Site header search.
+.site-header__search {
+  float: right;
+  clear: right;
+
+  .form-optional {
+    display: none;
+  }
+  label {
+    display: none;
+  }
+  .region-site-search {
+    position: relative;
+  }
+  .form-item {
+    display: none;
+  }
+  .form-actions {
+    margin: 0;
+    padding: 0;
+
+    input {
+      display: none;
+    }
+  }
+  .form-item-search,
+  .form-item-site-keyword {
+    display: block;
+
+    input {
+      margin: 0;
+      // Right padding is for search submit icon.
+      padding: 6px 36px 6px 12px;
+      width: 100%;
+      max-width: 400px;
+      font-size: 14px;
+    }
+  }
+  .bef-exposed-form .form-item {
+    margin: 0;
+  }
+  .form-submit--trigger {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    z-index: 1;
+
+    &:hover {
+      text-decoration: none;
+    }
+    // Search icon.
+    &::before {
+      @extend %fa-icon;
+      @extend .fas;
+      content: fa-content($fa-var-search);
+      font-size: 18px;
+      color: $gray-base;
+      transition: color 0.2s ease-in-out;
+    }
+    &:focus::before,
+    &:hover::before {
+      color: $gray;
+    }
+  }
+}
+
+// Site footer.
+.site-footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+  // background: #333;
+  background: #0b254f;
+
+  @media (min-width: $screen-sm-min) {
+    text-align: left;
+  }
+}
+
+// Footer navigation.
+.footer-nav {
+  margin: 0 0 50px;
+
+  .menu__link {
+    display: block;
+    margin: 0;
+    padding: 15px;
+  }
+}
+
+// Footer social media navigation.
+.site-footer .social-media-nav {
+  float: none;
+
+  @media (min-width: $screen-sm-min) {
+    float: right;
+  }
+}
+
+// Footer copyright.
+.site-footer__copyright {
+  clear: both;
+  font-size: 10px;
+  color: white;
+}
+
+.site-footer a {
+  clear: both;
+  font-size: 10px;
+  color: white;
+}
+
+// Footer brands.
+.footer-brands {
+  position: relative;
+  background-image: url("../site-footer-background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 850px;
+  padding: 20px 15px 40px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+  }
+
+  // Small screen / tablet and above - match .site-content desktop padding
+  @media (min-width: $screen-sm-min) {
+    padding: 50px 15px;
+  }
+
+  // Content container styling
+  .container {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+// Sticky footer.
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+.dialog-off-canvas-main-canvas {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-image: url("../site-background-splash.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.site-header,
+.site-footer {
+  flex: none;
+}
+.site-content {
+  flex: 1 0 auto;
+}

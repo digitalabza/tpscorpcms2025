@@ -1,0 +1,5 @@
+# Schema for the configuration files of the theproshopcorporate theme.
+
+theproshopcorporate.settings:
+  type: theme_settings
+  label: 'theproshopcorporate settings'

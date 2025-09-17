@@ -1,0 +1,96 @@
+//
+// Accordion.
+//
+
+.component-accordion__items {
+  clear: both;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+// Accordion Item.
+.component-accordion__item {
+  clear: both;
+}
+
+.component-accordion__item__title {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 15px 0 15px 20px;
+  font-family: $f-primary;
+  font-size: 18px;
+  line-height: 1.2;
+  color: $c-body;
+  text-decoration: none;
+  outline: none;
+  border-bottom: 1px solid $gray-border-light;
+
+  @media (min-width: $screen-lg-min) {
+    padding: 20px 0 20px 25px;
+    font-size: 24px;
+  }
+
+  // Arrow icon.
+  &::before {
+    @extend %fa-icon;
+    @extend .fas;
+    content: fa-content($fa-var-chevron-right);
+    position: absolute;
+    top: 18px;
+    left: 0;
+    font-size: 14px;
+    color: lighten($gray-light, 10%);
+    transition: all .2s ease-in-out;
+
+    @media (min-width: $screen-lg-min) {
+      top: 25px;
+      font-size: 18px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $c-link-hover;
+    text-decoration: none;
+
+    // Arrow icon.
+    &::before {
+      color: $gray-light;
+    }
+  }
+}
+
+// Active state.
+.component-accordion__item.active .component-accordion__item__title {
+  color: $c-body;
+
+  // Down arrow icon.
+  &::before {
+    content: fa-content($fa-var-chevron-down);
+  }
+
+  &:hover,
+  &:focus {
+    color: $c-link-hover;
+  }
+}
+
+.component-accordion__item__content {
+  display: none;
+  margin: 0;
+  padding: 20px;
+  border-bottom: 1px solid $gray-border-light;
+
+  p:last-child {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// Full Width.
+.component-accordion--full-width {
+  clear: both;
+  margin: 0 0 60px;
+  padding: 0;
+}

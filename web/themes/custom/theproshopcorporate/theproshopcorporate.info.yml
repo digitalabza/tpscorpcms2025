@@ -1,0 +1,51 @@
+name: The Pro Shop Corporate
+description: The Pro Shop Corporate theme based on Radix.
+screenshot: screenshot.png
+core_version_requirement: ^8.7.7 || ^9.0 || ^10
+# version: VERSION
+engine: twig
+type: theme
+base theme: radix
+
+"interface translation project": theproshopcorporate
+"interface translation server pattern": "themes/custom/theproshopcorporate/translations/%language.po"
+
+regions:
+  above_site: "Above Site"
+  site_search: "Site Search"
+  navbar_branding: "Navbar branding"
+  navbar_left: "Navbar left"
+  navbar_right: "Navbar right"
+  header: "Header"
+  highlighted: "Highlighted"
+  above_content: "Above Content"
+  content: "Content"
+  below_content: "Below Content"
+  left_sidebar: "Left Sidebar"
+  right_sidebar: "Right Sidebar"
+  above_footer: "Above Footer"
+  footer: "Footer"
+  page_bottom: "Page bottom"
+  mobile_nav: "Mobile Navigation"
+  user_nav: "User Navigation"
+  header_nav: "Header Navigation"
+  primary_nav: "Primary Navigation"
+  footer_brands: "Footer Brands"
+  footer_logo: "Footer Logo"
+  footer_nav: "Footer Navigation"
+  social_nav: "Social Media Navigation"
+
+libraries:
+  - theproshopcorporate/style
+
+ckeditor_stylesheets:
+  - build/css/main.style.css
+
+components:
+  namespaces:
+    theproshopcorporate: src/components
+
+# Information added by Drupal.org packaging script on 2024-04-29
+version: "5.0.12"
+project: "radix"
+datestamp: 1714376192
