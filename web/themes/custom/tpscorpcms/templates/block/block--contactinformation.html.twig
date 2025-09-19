@@ -1,0 +1,93 @@
+{#
+/**
+ * @file
+ * Theme implementation for a Contact Information block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ * - content: The content of this block.
+ * - attributes: HTML attributes for the containing element.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    'block--contactinformation',
+  ]
+%}
+<div{{attributes.addClass(classes)}}>
+	{{ title_prefix }}
+	{% if label %}
+		<h2{{title_attributes}}>{{ label }}</h2>
+	{% endif %}
+	{{ title_suffix }}
+
+	<div class="row">
+		<!-- Section-header -->
+		{# {% if content.field_title %}
+								      <div class="section-header text-center">
+								        <h2 class="title">{{ content.field_title }}</h2>
+								      </div>
+								    {% endif %} #}
+		<!-- /Section-header -->
+
+		<!-- Phone contact -->
+			{% if content.field_phone %}
+				<div class="col-sm-4"> <div class="contact">
+					<i class="fa fa-phone"></i>
+					<div class="section-header text-center">
+						<h3 class="title">Phone</h3>
+					</div>
+					<p>{{ content.field_phone }}</p>
+				</div>
+			</div>
+		{% endif %}
+		<!-- /Phone contact -->
+
+		<!-- Email contact -->
+		{% if content.field_email %}
+			<div class="col-sm-4">
+				<div class="contact">
+					<i class="fa fa-envelope"></i>
+					<div class="section-header text-center">
+						<h3 class="title">Email</h3>
+					</div>
+					<p>
+						<a href="mailto:{{ content.field_email|render|striptags|trim }}">{{ content.field_email }}</a>
+					</p>
+				</div>
+			</div>
+		{% endif %}
+		<!-- /Email contact -->
+
+		<!-- Address contact -->
+		{% if content.field_address %}
+			<div class="col-sm-4">
+				<div class="contact">
+					<i class="fa fa-map-marker"></i>
+					<div class="section-header text-center">
+						<h3 class="title">Visit our Showroom</h3>
+					</div>
+					<div class="address">
+						{{ content.field_address }}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+		<!-- /Address contact -->
+
+	</div>
+	<!-- /Row -->
+</div>

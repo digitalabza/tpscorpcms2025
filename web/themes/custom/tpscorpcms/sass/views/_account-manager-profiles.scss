@@ -1,0 +1,222 @@
+//
+// Account Manager Profiles View
+//
+
+// Account Manager header styling for "Chat to our Team"
+.account-manager-header {
+  margin: 30px;
+  text-align: center;
+
+  .account-manager-title {
+    font-family: $f-primary; // Montserrat
+    font-size: 2.5em;
+    color: $c-body;
+    margin: 0 0 0px;
+    font-weight: 500;
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #4caf50;
+      margin: 10px auto 0;
+    }
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 2em;
+    }
+  }
+}
+
+.views-view-grid.account-manager-profiles-grid {
+  margin: 20px 0;
+
+  .account-manager-row {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .account-manager-col {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+
+    // 4 columns on large screens
+    @media (min-width: $screen-lg-min) {
+      width: 25%;
+      flex: 0 0 25%;
+    }
+
+    // 2 columns on medium screens
+    @media (min-width: $screen-md-min) and (max-width: $screen-lg-max) {
+      width: 50%;
+      flex: 0 0 50%;
+    }
+
+    // 1 column on small screens
+    @media (max-width: $screen-sm-max) {
+      width: 100%;
+      flex: 0 0 100%;
+    }
+  }
+
+  .account-manager-card {
+    background: $c-white;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 15px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .account-manager-profile {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    // Profile Image
+    .profile-image {
+      margin-bottom: 20px;
+
+      img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #4caf50;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+
+    // Profile Name
+    .profile-name {
+      margin-bottom: 15px;
+
+      h3 {
+        font-family: $f-primary; // Montserrat
+        font-size: 1.4em;
+        color: #4caf50;
+        margin: 0;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+    }
+
+    // Contact Details
+    .contact-details {
+      margin-bottom: 20px;
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+        font-family: $f-body; // Inter
+        font-size: 0.95em;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        i {
+          font-size: 1.1em;
+          color: #4caf50;
+          margin-right: 8px;
+          width: 16px;
+          text-align: center;
+        }
+
+        a {
+          color: $c-body;
+          text-decoration: none;
+
+          &:hover,
+          &:focus {
+            color: #4caf50;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    // Bio Section
+    .profile-bio {
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 1px solid $gray-lighter;
+
+      p {
+        font-family: $f-body; // Inter
+        font-size: 0.9em;
+        color: $c-body;
+        line-height: 1.5;
+        margin: 0;
+      }
+    }
+
+    // Body Content (if used)
+    .profile-body {
+      margin-top: 15px;
+
+      p {
+        font-family: $f-body; // Inter
+        font-size: 0.9em;
+        color: $c-body;
+        line-height: 1.5;
+        margin-bottom: 10px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: $screen-sm-max) {
+    margin: 15px 0;
+
+    .account-manager-card {
+      padding: 20px 15px;
+
+      .profile-image img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .profile-name h3 {
+        font-size: 1.2em;
+      }
+
+      .contact-details .contact-item {
+        font-size: 0.85em;
+
+        i {
+          font-size: 1em;
+        }
+      }
+
+      .profile-bio,
+      .profile-body {
+        p {
+          font-size: 0.85em;
+        }
+      }
+    }
+  }
+}
+
+// Alternative styling when used in different contexts
+.views-view.view-account-manager-profiles {
+  .account-manager-profiles-grid {
+    // Additional context-specific styles can go here
+  }
+}

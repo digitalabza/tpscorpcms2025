@@ -1,0 +1,60 @@
+//
+// Strap.
+//
+
+.component-brand-logo-strap {
+  position: relative;
+  clear: both;
+  margin: 0 0 25px;
+  background-size: cover;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+
+  .component-brand-logo-strap__content {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    z-index: 1;
+  }
+}
+.component-brand-logo-strap__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.component-brand-logo-strap__body {
+  margin: 0;
+  padding: 0;
+}
+// If there's a text color override set.
+.component-brand-logo-strap--color-override {
+  .base-accordion .base-accordion__content {
+    background: none;
+  }
+  a {
+    text-decoration: underline;
+  }
+  a:hover,
+  a:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .component-brand-logo-strap {
+    padding: 5px 2px;
+  }
+
+  .component-brand-logo-strap__content {
+    max-width: none;
+  }
+
+  .component-brand-logo-strap__body {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

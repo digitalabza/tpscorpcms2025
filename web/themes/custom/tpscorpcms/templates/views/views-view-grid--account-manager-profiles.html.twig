@@ -1,0 +1,76 @@
+{#
+/**
+ * @file
+ * Theme override to display account manager profiles in a grid layout.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapping element.
+ * - title: The title of this group of rows.
+ * - view: The view object.
+ * - rows: The rendered view results.
+ * - options: The view plugin style options.
+ * - items: A list of grid items.
+ *
+ * @see template_preprocess_views_view_grid()
+ */
+#}
+{%
+  set classes = [
+    'views-view-grid',
+    'account-manager-profiles-grid',
+    options.alignment,
+    'cols-' ~ options.columns,
+    'clearfix',
+  ]
+%}
+{% if options.row_class_default %}
+  {%
+    set row_classes = [
+      'views-row',
+      'account-manager-row',
+      options.alignment == 'horizontal' ? 'clearfix',
+    ]
+  %}
+{% endif %}
+{% if options.col_class_default %}
+  {%
+    set col_classes = [
+      'views-col',
+      'account-manager-col',
+      options.alignment == 'vertical' ? 'clearfix',
+    ]
+  %}
+{% endif %}
+
+{# Custom "Chat to our Team" header #}
+<div class="account-manager-header">
+  <h2 class="account-manager-title">Chat to our Team</h2>
+</div>
+
+<div{{ attributes.addClass(classes) }}>
+  {% if options.alignment == 'horizontal' %}
+    {% for row in items %}
+      <div{{ row.attributes.addClass(row_classes, options.row_class_default ? 'row-' ~ loop.index) }}>
+        {% for column in row.content %}
+          <div{{ column.attributes.addClass(col_classes, options.col_class_default ? 'col-' ~ loop.index) }}>
+            <div class="account-manager-card">
+              {{- column.content -}}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% else %}
+    {% for column in items %}
+      <div{{ column.attributes.addClass(col_classes, options.col_class_default ? 'col-' ~ loop.index) }}>
+        <div class="account-manager-card">
+          {% for row in column.content %}
+            <div{{ row.attributes.addClass(row_classes, options.row_class_default ? 'row-' ~ loop.index) }}>
+              {{- row.content -}}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>

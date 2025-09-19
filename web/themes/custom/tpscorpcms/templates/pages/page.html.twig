@@ -145,10 +145,7 @@
 {% endblock page_header %}
 
 {% block page_body %}
-	{#
-																						    Render sidebars to check if it is truly empty.
-																						    Issue: https://www.drupal.org/node/953034.
-																						  #}
+
 	{% set left_sidebar_rendered = page.left_sidebar|render %}
 	{% set left_sidebar_exists = left_sidebar_rendered|striptags('<a><img>')|trim ? true : false %}
 
@@ -184,6 +181,10 @@
 					</div>
 				{% endif %}
 				{# / Left Sidebar. #}
+
+				{% if page.media_above_content %}
+					{{ page.media_above_content }}
+				{% endif %}
 
 				{# Main content. #}
 				<div class="{{ col_class }}">
@@ -248,7 +249,7 @@
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-5">
 					{# Social Media Links. #}
 					{# Set from theme settings. #}
 						{% if page.footer_logo %}
@@ -257,7 +258,7 @@
 						<div class="site-footer__copyright"> {{ 'Copyright &copy; @year <a href="@frontpage_url">@site_name</a>.  All rights reserved.'| t({'@site_name': copyright_name ? copyright_name : site_name, '@frontpage_url': front_page, '@year': 'now'|date('Y') }) }}
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-7">
 					{# Social Media Links. #}
 					{# Set from theme settings. #}
 						{% if page.footer_nav %}

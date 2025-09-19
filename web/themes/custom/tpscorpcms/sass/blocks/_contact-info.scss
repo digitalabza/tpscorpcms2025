@@ -1,0 +1,127 @@
+//
+// Contact Information Block
+//
+.block--contactinformation {
+  margin: 5px 0;
+
+  .section-header {
+    margin-bottom: 15px;
+    text-align: center;
+
+    .title {
+      font-family: $f-primary; // Montserrat
+      // font-size: 2.5em;
+      color: $c-white;
+      margin: 0 0 0px;
+      font-weight: 400;
+      position: relative;
+
+      &:after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: #4caf50;
+        margin: 10px auto 0;
+      }
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 2em;
+      }
+    }
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  .contact {
+    text-align: center;
+    padding: 0 15px;
+    margin-bottom: 30px;
+    color: #fff;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    i {
+      font-size: 1.5em;
+      color: #4caf50;
+      margin-bottom: 20px;
+      display: block;
+      line-height: 1;
+    }
+
+    h3 {
+      font-family: $f-primary; // Montserrat
+      font-size: 1.5em;
+      color: #fff;
+      margin: 0 0 20px;
+      font-weight: 400;
+    }
+
+    p {
+      font-family: $f-body; // Inter
+      font-size: 1em;
+      color: #fff;
+      margin: 0 0 5px;
+      line-height: 1.4;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // Address styling with green backgrounds
+    .address p {
+      display: inline-block;
+      background: #4caf50;
+      color: $c-white;
+      padding: 4px 8px;
+      margin: 2px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+
+    // Email links
+    a {
+      color: #fff;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: #4caf50;
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: $screen-sm-max) {
+    .contact {
+      margin-bottom: 25px;
+      padding: 0 10px;
+
+      i {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+      }
+
+      h3 {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-size: 0.9em;
+      }
+
+      .address p {
+        font-size: 0.8em;
+        padding: 3px 6px;
+      }
+    }
+  }
+}

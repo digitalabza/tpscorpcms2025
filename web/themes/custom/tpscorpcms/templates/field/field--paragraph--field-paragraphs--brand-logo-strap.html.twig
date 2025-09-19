@@ -1,0 +1,37 @@
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+  ]
+%}
+<div class="container-fluid">
+	{% if multiple %}
+		<div{{ attributes.addClass(classes, 'row') }}>
+			{% set number_of_columns = items|length %}
+				{% set column_classes = ['col-xs-6'] %}
+				{% if number_of_columns == 1 %}
+					{% set column_classes = ['col-xs-12'] %}
+			{% elseif number_of_columns == 2 %}
+				{% set column_classes = column_classes|merge(['col-sm-6']) %}
+			{% elseif number_of_columns == 3 %}
+				{% set column_classes = column_classes|merge(['col-sm-4']) %}
+			{% elseif number_of_columns >= 4 %}
+				{% set column_classes = column_classes|merge(['col-sm-3']) %}
+			{% endif %}
+			{% set column_width_md = (12 / number_of_columns)|round(0, 'floor') %}
+			{% if column_width_md < 1 %}
+				{% set column_width_md = 1 %}
+			{% endif %}
+			{% set column_classes = column_classes|merge(['col-md-' ~ column_width_md]) %}
+			{% for item in items %}
+				<div{{ item.attributes.addClass(column_classes) }}>{{ item.content }}</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		{% for item in items %}
+			<div{{attributes.addClass(classes,'row')}}>{{ item.content }}</div>
+		{% endfor %}
+	{% endif %}
+</div>

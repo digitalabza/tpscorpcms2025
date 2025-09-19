@@ -25,6 +25,7 @@ regions:
   site_search: "Site Search"
   header: "Header"
   highlighted: "Highlighted"
+  media_above_content: "Media Above Content"
   above_content: "Above Content"
   content: "Content"
   below_content: "Below Content"

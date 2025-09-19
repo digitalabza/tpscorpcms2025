@@ -1,0 +1,86 @@
+{#
+/**
+ * @file
+ * Theme override to display the fields of a single account manager profile.
+ *
+ * Available variables:
+ * - view: The view that the fields belong to.
+ * - fields: An array of fields configured for this view. Each field contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *
+ * @see template_preprocess_views_view_fields()
+ */
+#}
+
+<div class="account-manager-profile">
+
+  {# Profile Image #}
+  {% if fields.field_profile_image %}
+    <div class="profile-image">
+      {{ fields.field_profile_image.content }}
+    </div>
+  {% endif %}
+
+  {# Profile Name (Title) #}
+  {% if fields.title %}
+    <div class="profile-name">
+      <h3>{{ fields.title.content }}</h3>
+    </div>
+  {% endif %}
+
+  {# Contact Information #}
+  <div class="contact-details">
+
+    {# Email Address #}
+    {% if fields.field_email_address %}
+      <div class="contact-item email">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:{{ fields.field_email_address.raw }}">
+          {{ fields.field_email_address.content }}
+        </a>
+      </div>
+    {% endif %}
+
+    {# Mobile Number #}
+    {% if fields.field_mobile %}
+      <div class="contact-item mobile">
+        <i class="fas fa-phone"></i>
+        <a href="tel:{{ fields.field_mobile.raw }}">
+          {{ fields.field_mobile.content }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+
+  {# Bio #}
+  {% if fields.field_bio %}
+    <div class="profile-bio">
+      {{ fields.field_bio.content }}
+    </div>
+  {% endif %}
+
+  {# Body Content (if available) #}
+  {% if fields.body %}
+    <div class="profile-body">
+      {{ fields.body.content }}
+    </div>
+  {% endif %}
+
+</div>
