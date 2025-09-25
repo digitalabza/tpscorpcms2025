@@ -10,10 +10,11 @@
 // CSS Variables for theming
 :root {
   --header-bg: #0b254f;
-  --header-height: 120px;
+  --header-height: 80px;
   --header-height-mobile: 80px;
   --link-color: #fff;
   --link-hover-color: #fff;
+  --site-header-transition: top 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 // Prevent horizontal overflow from viewport width header
@@ -32,38 +33,123 @@ html {
 }
 
 
+// Body adjustments for fixed header
+body {
+  // Smooth transition for padding changes
+  transition: padding-top 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+  // Add padding for fixed header when visible
+  &.header-visible {
+    padding-top: var(--header-height);
+
+    @media (max-width: 767px) {
+      padding-top: var(--header-height-mobile);
+    }
+
+    // Gin admin theme compatibility - account for admin toolbar
+    &.gin--vertical-toolbar,
+    &.gin--horizontal-toolbar,
+    &.gin--classic-toolbar {
+      padding-top: calc(var(--gin-toolbar-y-offset, 0) + var(--header-height));
+
+      @media (max-width: 767px) {
+        padding-top: calc(var(--gin-toolbar-y-offset, 0) + var(--header-height-mobile));
+      }
+    }
+  }
+}
+
 // Site header.
 .site-header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   min-height: var(--header-height);
   background: var(--header-bg);
   z-index: 200;
+  transition: var(--site-header-transition);
+
+  // Performance optimizations
+  will-change: top;
+  transform: translateZ(0); // Hardware acceleration
+
+  // Start hidden by default
+  &:not(.site-header--visible) {
+    top: calc(var(--header-height) * -1);
+
+    @media (max-width: 767px) {
+      top: calc(var(--header-height-mobile) * -1);
+    }
+  }
 
   // Mobile responsive height
   @media (max-width: 767px) {
     min-height: var(--header-height-mobile);
   }
+
+  // Header visibility states
+  &.site-header--hidden {
+    top: calc(var(--header-height) * -1);
+
+    @media (max-width: 767px) {
+      top: calc(var(--header-height-mobile) * -1);
+    }
+  }
+
+  &.site-header--visible {
+    top: 0;
+  }
+
+  // Gin admin theme compatibility
+  // Ensure our header z-index stays below admin elements
+  body.gin--vertical-toolbar &,
+  body.gin--horizontal-toolbar &,
+  body.gin--classic-toolbar & {
+    z-index: 199;
+
+    // Adjust positioning for admin toolbar
+    &:not(.site-header--visible) {
+      top: calc((var(--gin-toolbar-y-offset, 0) + var(--header-height)) * -1);
+
+      @media (max-width: 767px) {
+        top: calc((var(--gin-toolbar-y-offset, 0) + var(--header-height-mobile)) * -1);
+      }
+    }
+
+    &.site-header--visible {
+      top: var(--gin-toolbar-y-offset, 0);
+    }
+
+    &.site-header--hidden {
+      top: calc((var(--gin-toolbar-y-offset, 0) + var(--header-height)) * -1);
+
+      @media (max-width: 767px) {
+        top: calc((var(--gin-toolbar-y-offset, 0) + var(--header-height-mobile)) * -1);
+      }
+    }
+  }
 }
 .site-header__logo {
   float: left;
-  margin: 15px 0;
+  margin: 7.5px 0;
   padding: 0;
 
   .logo-normal {
     display: block;
-    width: 80px;
-    height: 89px;
+    width: 58px;
+    height: 65px;
 
     // Mobile responsive logo sizing
     @media (max-width: 767px) {
-      width: 60px;
-      height: 67px;
+      width: 45px;
+      height: 50px;
     }
   }
 
   // Mobile responsive margin
   @media (max-width: 767px) {
-    margin: 10px 0;
+    margin: 15px 0;
   }
 }
 

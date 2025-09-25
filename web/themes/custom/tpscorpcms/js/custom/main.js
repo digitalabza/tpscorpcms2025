@@ -112,6 +112,72 @@
     });
   }
 
+  // Site Header Visibility Behavior
+  Drupal.behaviors.siteHeaderVisibility = {
+    attach: function (context, settings) {
+      var $siteHeader = $(once('header-visibility', '.site-header', context));
+      var $body = $('body');
+      if ($siteHeader.length === 0) return;
+
+      var isScrolling = false;
+
+      // Show header and add body padding
+      function showHeader() {
+        $siteHeader.addClass('site-header--visible').removeClass('site-header--hidden');
+        $body.addClass('header-visible');
+      }
+
+      // Hide header and remove body padding
+      function hideHeader() {
+        $siteHeader.addClass('site-header--hidden').removeClass('site-header--visible');
+        $body.removeClass('header-visible');
+      }
+
+      // Initialize header state based on current scroll position
+      function initializeHeaderState() {
+        var scrollTop = $(window).scrollTop();
+        if (scrollTop === 0) {
+          // At the top - header should be hidden
+          hideHeader();
+        } else {
+          // Not at top - header should be visible
+          showHeader();
+        }
+      }
+
+      // Throttled scroll handler for header visibility
+      function handleHeaderVisibility() {
+        var scrollTop = $(window).scrollTop();
+
+        if (scrollTop === 0) {
+          // Exactly at the top - hide header
+          hideHeader();
+        } else {
+          // Any scroll down - show header and keep it visible
+          showHeader();
+        }
+
+        isScrolling = false;
+      }
+
+      // Initialize header state on page load
+      initializeHeaderState();
+
+      // Passive scroll listener for header visibility
+      $(window).on('scroll.headerVisibility', function() {
+        if (!isScrolling) {
+          requestAnimationFrame(handleHeaderVisibility);
+          isScrolling = true;
+        }
+      });
+
+      // Handle page resize and orientation changes
+      $(window).on('resize.headerVisibility orientationchange.headerVisibility', function() {
+        setTimeout(initializeHeaderState, 100);
+      });
+    }
+  };
+
   // Scroll To Top Button Behavior
   Drupal.behaviors.scrollToTop = {
     attach: function (context, settings) {
@@ -140,12 +206,13 @@
           isScrolling = true;
         }
       });
+
+      // Click handler for scroll-to-top button
+      $scrollToTopButton.click(function (e) {
+        $('html, body').animate({ scrollTop: 0 }, 360);
+        e.preventDefault();
+      });
     }
   };
-
-  $scrollToTopButton.click(function (e) {
-    $('html, body').animate({ scrollTop: 0 }, 360);
-    e.preventDefault();
-  });
 
 })(jQuery, Drupal, once);

@@ -31,6 +31,7 @@ Install as you would install any other [contributed Drupal module](https://www.d
   - npm run gulp - Run default gulp task (compile + watch)
   - npx gulp sass - Compile CSS once
   - npx gulp sass-watch - Watch and compile on changes
+  - npm prune --omit=dev
 
 ## Starting Your New Custom Theme
 
