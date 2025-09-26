@@ -115,6 +115,9 @@
   // Site Header Visibility Behavior
   Drupal.behaviors.siteHeaderVisibility = {
     attach: function (context, settings) {
+      // Don't run site header behavior on account manager profile pages
+      if ($('.account-manager-profile-page').length > 0) return;
+
       var $siteHeader = $(once('header-visibility', '.site-header', context));
       var $body = $('body');
       if ($siteHeader.length === 0) return;

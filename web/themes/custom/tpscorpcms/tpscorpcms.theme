@@ -300,6 +300,11 @@ function tpscorpcms_preprocess_node(&$variables) {
 
     $encoded_title = rawurlencode($node->title->value);
     $variables['encoded_title'] = $encoded_title;
+
+    // Add profile sticky header library for account manager profiles.
+    if ($node->getType() === 'account_manager_profiles') {
+      $variables['#attached']['library'][] = 'tpscorpcms/profile-sticky-header';
+    }
   }
 }
 

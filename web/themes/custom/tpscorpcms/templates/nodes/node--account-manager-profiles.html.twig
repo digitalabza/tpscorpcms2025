@@ -1,0 +1,148 @@
+{#
+/**
+ * @file
+ * Theme override to display an account manager profile node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}.
+ * - url: Direct URL of the current node.
+ * - attributes: HTML attributes for the containing element.
+ * - title_attributes: Same as attributes, except applied to the main title tag.
+ * - content_attributes: Same as attributes, except applied to the main content tag.
+ *
+ * @see template_preprocess_node()
+ */
+#}
+
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, 'node--view-mode-' ~ view_mode|clean_class, 'account-manager-profile-page') }}>
+
+  {# Profile Header Section #}
+  <div class="profile-header-section">
+    <div class="profile-header-content">
+      <div class="container">
+        <div class="row align-items-center">
+
+          {# Left Column - Profile Info #}
+          <div class="col-lg-7 col-md-6">
+            <div class="profile-info">
+
+              {# Company Logo #}
+              <div class="company-logo">
+                <img src="{{ base_path ~ directory }}/logo.svg" alt="The Pro Shop Corporate" class="logo-img">
+              </div>
+
+              {# Intro Text #}
+              <div class="profile-intro">
+                <p>Hi there! Let me introduce myself.</p>
+              </div>
+
+              {# Profile Name #}
+              <div class="profile-name">
+                <h1{{ title_attributes }}>{{ label }}</h1>
+              </div>
+
+              {# Contact Buttons #}
+              <div class="contact-buttons">
+
+                {% if content.field_whatsapp[0] %}
+                  <a href="https://wa.me/{{ content.field_whatsapp[0]['#context']['value']|replace({'+': '', ' ': '', '-': '', '(': '', ')': ''}) }}"
+                     class="contact-btn whatsapp-btn"
+                     target="_blank"
+                     rel="noopener"
+                     aria-label="Talk to {{ node.title.value|split(' ')|first }} on WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Talk to {{ node.title.value|split(' ')|first }} on WhatsApp</span>
+                  </a>
+                {% endif %}
+
+                {% if content.field_email_address[0] %}
+                  <a href="mailto:{{ content.field_email_address[0]['#context']['value'] }}"
+                     class="contact-btn email-btn"
+                     aria-label="Email {{ content.field_email_address[0]['#context']['value'] }}">
+                    <i class="fas fa-envelope"></i>
+                    <span>{{ content.field_email_address[0]['#context']['value'] }}</span>
+                  </a>
+                {% endif %}
+
+                {% if node.field_mobile.value %}
+                  <a href="tel:{{ node.field_mobile.value }}"
+                     class="contact-btn phone-btn"
+                     aria-label="Call {{ node.field_mobile.value }}">
+                    <i class="fas fa-phone"></i>
+                    <span>{{ node.field_mobile.value }}</span>
+                  </a>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+
+          {# Right Column - Profile Image #}
+          <div class="col-lg-5 col-md-6">
+            <div class="profile-image-wrapper">
+              {% if content.field_profile_image[0] %}
+                {{ content.field_profile_image|without('#theme', '#weight', '#printed') }}
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Bio Section #}
+  {% if content.field_bio[0] %}
+    <div class="profile-bio-section">
+      <div class="container">
+        <div class="bio-content">
+          <div class="quote-icon">
+            <i class="fas fa-quote-left"></i>
+          </div>
+          <div class="bio-text">
+            {{ content.field_bio|without('#theme', '#weight', '#printed') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {# Additional Content (if any) #}
+  {% if content.body[0] %}
+    <div class="profile-additional-content">
+      <div class="container">
+        <div{{ content_attributes.addClass('node__content') }}>
+          {{ content.body }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+</article>
+
+{# Sticky Header (Hidden by default, shown on scroll) #}
+<div class="profile-sticky-header" id="profileStickyHeader">
+  <div class="sticky-header-content">
+    <div class="sticky-logo">
+      <a href="/" title="Go to homepage">
+        <img src="{{ base_path ~ directory }}/logo-small-scroll.svg" alt="The Pro Shop Corporate" class="sticky-logo-img">
+      </a>
+    </div>
+
+    {% if content.field_whatsapp[0] %}
+      <div class="sticky-contact">
+        <a href="https://wa.me/{{ content.field_whatsapp[0]['#context']['value']|replace({'+': '', ' ': '', '-': '', '(': '', ')': ''}) }}"
+           class="sticky-whatsapp-btn"
+           target="_blank"
+           rel="noopener"
+           aria-label="Talk to {{ node.title.value|split(' ')|first }} on WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+          <span>Talk to {{ node.title.value|split(' ')|first }} on WhatsApp</span>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

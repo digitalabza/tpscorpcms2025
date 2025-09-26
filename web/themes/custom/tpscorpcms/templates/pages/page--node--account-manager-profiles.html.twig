@@ -1,0 +1,130 @@
+{#
+/**
+ * @file
+ * Theme override to display a page for account manager profile nodes.
+ *
+ * This template hides the default site header and provides a custom
+ * layout specifically for account manager profile pages.
+ */
+#}
+{% block page_header %}
+	{% if page.above_site %}
+		<div class="above-site">
+			{{ page.above_site }}
+		</div>
+	{% endif %}
+
+	{# Mobile overlays. #}
+	{% if page.mobile_nav %}
+		{% if page.site_search %}
+			<div class="mobile-search-overlay mobile-overlay">
+				<div class="mobile-search-overlay__content mobile-overlay__content">
+					<a href="#" class="mobile-search-overlay__close mobile-overlay__close" aria-label="{{ 'Close'|t }}">
+						<span class="fas fa-times" aria-hidden="true"></span>
+					</a>
+
+					<div class="mobile-search-form">
+						{{ page.site_search }}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+		<div class="mobile-nav-overlay mobile-overlay">
+			<div class="mobile-nav-overlay__content mobile-overlay__content clearfix">
+				<header class="mobile-nav-overlay__header clearfix" role="banner">
+					<a href="#" class="mobile-nav-overlay__close mobile-overlay__close" aria-label="{{ 'Close'|t }}">
+						<span class="fas fa-times" aria-hidden="true"></span>
+					</a>
+				</header>
+
+				<div class="mobile-nav">
+					{{ page.mobile_nav }}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	{# / Mobile overlays. #}
+
+	{# Hide default site header for profile pages - it will be replaced by the custom profile header #}
+{% endblock page_header %}
+
+{% block page_body %}
+	{# Profile pages use full-width layout without standard containers #}
+	<div class="site-content account-manager-profile-content">
+		{% if page.header %}
+			<div class="site-content__header">
+				{{ page.header }}
+			</div>
+		{% endif %}
+
+		{# Main content for profile page - full width #}
+		<main class="content__main-content profile-main-content clearfix" role="main">
+			<div class="visually-hidden">
+				<a id="main-content" tabindex="-1"></a>
+			</div>
+			{% if page.highlighted %}
+				{{ page.highlighted }}
+			{% endif %}
+			{% if page.above_content %}
+				{{ page.above_content }}
+			{% endif %}
+			{% if page.content %}
+				{{ page.content }}
+			{% endif %}
+			{% if page.below_content %}
+				{{ page.below_content }}
+			{% endif %}
+		</main>
+	</div>
+{% endblock page_body %}
+
+{# Google Maps #}
+{% block page_above_footer %}
+	{% if page.above_footer %}
+		{{ page.above_footer }}
+	{% endif %}
+{% endblock page_above_footer %}
+{# /Google Maps #}
+
+{# Brands Logos #}
+{% block page_footer_brands %}
+	{% if page.footer_brands %}
+		<div class="footer-brands">
+			<div class="container">
+				{{ page.footer_brands }}
+			</div>
+		</div>
+	{% endif %}
+{% endblock page_footer_brands %}
+{# /Brands Logos #}
+
+{% block page_footer %}
+	<a href="#" class="b-page-scroll-to-top" title="{{ 'Scroll To Top'|t }}" aria-label="{{ 'Scroll To Top'|t }}" role="button" tabindex="-1"></a>
+	<footer class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					{# Social Media Links. #}
+					{# Set from theme settings. #}
+						{% if page.footer_logo %}
+					{{ page.footer_logo }}
+					{% endif %}
+						<div class="site-footer__copyright"> {{ 'Copyright &copy; @year <a href="@frontpage_url">@site_name</a>.  All rights reserved.'| t({'@site_name': copyright_name ? copyright_name : site_name, '@frontpage_url': front_page, '@year': 'now'|date('Y') }) }}
+					</div>
+				</div>
+				<div class="col-md-7">
+					{# Social Media Links. #}
+					{# Set from theme settings. #}
+						{% if page.footer_nav %}
+							<div class="footer-nav"> {{ page.footer_nav }}
+						</div>
+					{% endif %}
+					<div class="site-footer__copyright_mobile">
+						{{ 'Copyright &copy; @year <a href="@frontpage_url">@site_name</a>.  All rights reserved.'| t({'@site_name': copyright_name ? copyright_name : site_name, '@frontpage_url': front_page, '@year': 'now'|date('Y') }) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+{% endblock page_footer %}

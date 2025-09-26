@@ -74,6 +74,15 @@ paragraph-notice-strap:
     - core/drupal
     - tpscorpcms/js-cookie
 
+profile-sticky-header:
+  version: 1.x
+  js:
+    js/custom/profile-sticky-header.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+
 # Libraries from contributed code.
 js-cookie:
   version: 2.2
